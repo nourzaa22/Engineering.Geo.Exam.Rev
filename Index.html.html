@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAS 131 — Engineering Geology | Final Exam Study Hub</title>
+<style>
+  :root{
+    --bg:#e8e6e1; --card:#f7f6f3; --ink:#1c1c1c; --muted:#5c5c5c; --border:#c9c5bd; --thbg:#dedad2;
+    --tipbg:#f5ecd8; --exambg:#f3e0d8; --solvedbg:#e3ead9; --factbg:#e4e1da; --navbg:#f7f6f3;
+    --l1:#34495e; --l2:#5f6f52; --l3:#c2410c; --l4:#9a3412; --l5:#6b7280; --l6:#78716c;
+    --gold:#b45309; --green:#3f6212; --formulabg:#1c1c1c; --formulaink:#fbbf24; --accent:#ea580c;
+  }
+  [data-theme="dark"]{
+    --bg:#141517; --card:#1f2125; --ink:#e7e5e0; --muted:#9b988f; --border:#383b41; --thbg:#26282d;
+    --tipbg:#2a2410; --exambg:#2c1a12; --solvedbg:#1c2416; --factbg:#26282d; --navbg:#1f2125;
+    --l1:#64748b; --l2:#7d8f6a; --l3:#ea580c; --l4:#c2410c; --l5:#8b8d92; --l6:#a8a29e;
+    --formulabg:#0c0d0f; --formulaink:#fbbf24; --accent:#f97316;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  section{scroll-margin-top:64px}
+  body{font-family:'Segoe UI',Tahoma,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding-bottom:60px;transition:background .3s,color .3s}
+  body.lang-ar{direction:rtl}
+  body.lang-ar .i-en{display:none!important}
+  body:not(.lang-ar) .i-ar{display:none!important}
+  .formula, table, .qopts{direction:ltr}
+  body.lang-ar table th, body.lang-ar table td{text-align:right}
+  .wrap{max-width:880px;margin:0 auto;padding:0 18px}
+  header{background:linear-gradient(160deg,#16181c 0%,#26282d 60%,#33363c 100%);color:#fff;padding:46px 18px 30px;text-align:center;border-bottom:8px solid;border-image:repeating-linear-gradient(45deg,#fbbf24 0 14px,#1c1c1c 14px 28px) 8}
+  header h1{font-size:1.85em;letter-spacing:1.5px;text-transform:uppercase;font-weight:900}
+  header h1 span{color:#fff}
+  header .sub-accent{color:#f97316}
+  header p{opacity:.92;margin-top:6px;font-size:1.02em}
+  .badge{display:inline-block;background:#f97316;color:#16181c;border:none;border-radius:4px;padding:5px 16px;font-size:.85em;font-weight:800;margin-top:12px;letter-spacing:.5px}
+  .toggles{position:fixed;top:12px;inset-inline-end:14px;z-index:99;display:flex;gap:8px}
+  .toggles button{cursor:pointer;border:none;border-radius:999px;padding:8px 14px;font-weight:700;font-size:.9em;background:rgba(255,255,255,.92);color:#1e293b;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  [data-theme="dark"] .toggles button{background:#1e293b;color:#e2e8f0}
+  nav{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:0 auto;max-width:920px;padding:10px 14px;background:var(--navbg);border-radius:0 0 16px 16px;box-shadow:0 2px 10px rgba(16,24,40,.08)}
+  nav a{text-decoration:none;font-size:.82em;font-weight:700;padding:5px 11px;border-radius:4px;background:var(--bg);color:var(--ink);border:1px solid var(--border);text-transform:uppercase;letter-spacing:.3px}
+  nav a:hover{filter:brightness(.93)}
+  section{margin-top:26px}
+  .card{background:var(--card);border-radius:6px;padding:22px 24px;box-shadow:0 2px 6px rgba(0,0,0,.18);margin-top:14px;border:1px solid var(--border);border-top:3px solid var(--accent)}
+  h2{font-size:1.22em;margin-top:32px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;text-transform:uppercase;letter-spacing:1px;font-weight:900}
+  h2 .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:4px;color:#fff;font-size:.8em;flex-shrink:0}
+  h3{font-size:1.02em;margin:14px 0 6px}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92em}
+  th,td{border:1px solid var(--border);padding:7px 10px;text-align:left}
+  th{background:var(--thbg)}
+  .formula{background:var(--formulabg);color:var(--formulaink);border-radius:10px;padding:10px 14px;font-family:Cambria,Georgia,serif;font-size:1.04em;margin:8px 0;overflow-x:auto;text-align:left}
+  .formula b{color:#7dd3fc}
+  .chip{display:inline-block;font-size:.74em;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff;vertical-align:middle}
+  .tip{background:var(--tipbg);border-inline-start:4px solid var(--gold);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:.94em}
+  .exam{background:var(--exambg);border-inline-start:4px solid var(--l4);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:.94em}
+  .solved{background:var(--solvedbg);border-inline-start:4px solid var(--green);border-radius:10px;padding:12px 14px;margin:10px 0;font-size:.94em}
+  ul.check{list-style:none}
+  ul.check li{padding:11px 13px;margin:9px 0;display:flex;gap:11px;align-items:flex-start;background:var(--bg);border:1px solid var(--border);border-radius:6px;border-inline-start:3px solid var(--accent)}
+  .pt{display:block;font-size:1.02em;margin-bottom:3px}
+  .pd{display:block;font-size:.93em;line-height:1.6}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;direction:inherit}
+  .tags span{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:3px 9px;font-size:.82em;font-weight:600}
+  .tags span.hot{border-color:var(--accent);color:var(--accent)}
+  ul.check input{margin-top:4px;width:18px;height:18px;accent-color:var(--green);flex-shrink:0}
+  .time{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--border)}
+  .time:last-child{border-bottom:none}
+  .clock{font-weight:800;font-size:.92em;color:#16181c;background:#fbbf24;border-radius:4px;padding:6px 10px;min-width:118px;text-align:center;flex-shrink:0;text-transform:uppercase}
+  .time small{color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:640px){
+    .grid2{grid-template-columns:1fr}
+    header{padding:38px 12px 24px}
+    header h1{font-size:1.32em;letter-spacing:.8px}
+    header p{font-size:.92em}
+    .badge{font-size:.78em;padding:5px 10px}
+    .wrap{padding:0 10px}
+    .card{padding:14px 13px}
+    h2{font-size:1.02em;letter-spacing:.5px}
+    h3{font-size:.98em}
+    nav{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:9px 10px}
+    nav::-webkit-scrollbar{display:none}
+    nav a{white-space:nowrap;flex-shrink:0}
+    table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .formula{font-size:.95em;padding:9px 11px}
+    .qopts button{padding:11px 12px;font-size:.95em}
+    .reveal-btn{padding:10px 18px;width:100%}
+    .toggles{top:8px;inset-inline-end:8px}
+    .toggles button{padding:7px 12px;font-size:.85em}
+    ul.check li{font-size:.95em}
+    .q{padding:12px 12px}
+  }
+  .fact{background:var(--factbg);border-radius:10px;padding:8px 12px;font-size:.92em}
+  .fact b{color:var(--l1)}
+  [data-theme="dark"] .fact b{color:#93c5fd}
+  footer{text-align:center;margin-top:40px;color:var(--muted);font-size:.88em}
+  .marks{font-size:.78em;font-weight:700;color:var(--l4);background:var(--exambg);border-radius:999px;padding:2px 10px}
+  /* ===== interactive quiz ===== */
+  .q{border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin:12px 0;background:var(--card)}
+  .q .qt{font-weight:600;margin-bottom:8px}
+  .qopts{display:grid;gap:7px;margin-top:8px}
+  .qopts button{cursor:pointer;text-align:left;border:1px solid var(--border);background:var(--bg);color:var(--ink);border-radius:10px;padding:8px 12px;font-size:.93em;transition:all .15s}
+  .qopts button:hover{border-color:var(--l1)}
+  .qopts button.correct{background:#16a34a!important;color:#fff!important;border-color:#16a34a}
+  .qopts button.wrong{background:#dc2626!important;color:#fff!important;border-color:#dc2626}
+  .qopts button:disabled{cursor:default;opacity:.85}
+  .fb{margin-top:8px;font-size:.9em;display:none}
+  .reveal-btn{cursor:pointer;border:none;border-radius:4px;padding:7px 18px;font-weight:800;font-size:.88em;background:var(--accent);color:#16181c;margin-top:8px;text-transform:uppercase;letter-spacing:.5px}
+  .reveal{display:none;margin-top:10px}
+  .score{position:sticky;bottom:10px;text-align:center;margin-top:14px}
+  .score span{background:#16181c;color:#fbbf24;border:2px solid #fbbf24;border-radius:4px;padding:8px 20px;font-weight:800;box-shadow:0 3px 10px rgba(0,0,0,.4)}
+  @media print{nav,.toggles{display:none} body{background:#fff} .card{box-shadow:none}}
+</style>
+</head>
+<body>
+
+<div class="toggles">
+  <button id="themeBtn" onclick="toggleTheme()">🌙</button>
+  <button id="langBtn" onclick="toggleLang()">عربي</button>
+</div>
+
+<header>
+  <h1>⛏️ <span class="i-en">Engineering Geology<br><span class="sub-accent">The Exam War Room</span></span><span class="i-ar">الجيولوجيا الهندسية<br><span class="sub-accent">غرفة عمليات الامتحان</span></span></h1>
+  <p>BAS 131 / CVL 131 · Dr. Sara Sameh · <span class="i-en">Lectures 1–6 · Nothing left out</span><span class="i-ar">المحاضرات من ١ لـ ٦ · مفيش حاجة ناقصة</span></p>
+  <div class="badge"><span class="i-en">🦺 3 HOURS · 50 MARKS · CLOSED BOOK · NO MERCY</span><span class="i-ar">🦺 ٣ ساعات · ٥٠ درجة · من غير كتاب · من غير رحمة</span></div>
+</header>
+
+<nav id="topnav">
+  <a href="#intel"><span class="i-en">🎯 Exam Intel</span><span class="i-ar">🎯 تحليل الامتحان</span></a>
+  <a href="#lec1"><span class="i-en">L1 Intro</span><span class="i-ar">م١ مقدمة</span></a>
+  <a href="#lec2"><span class="i-en">L1 Earth</span><span class="i-ar">م١ الأرض</span></a>
+  <a href="#lec3"><span class="i-en">L2 Rocks</span><span class="i-ar">م٢ الصخور</span></a>
+  <a href="#lec4"><span class="i-en">L3 Rock Class.</span><span class="i-ar">م٣ تصنيف الصخور</span></a>
+  <a href="#lec5"><span class="i-en">L4 Soil</span><span class="i-ar">م٤ التربة</span></a>
+  <a href="#lec6"><span class="i-en">L5–6 Geophysics</span><span class="i-ar">م٥–٦ الجيوفيزياء</span></a>
+  <a href="#formulas"><span class="i-en">📐 Formulas</span><span class="i-ar">📐 القوانين</span></a>
+  <a href="#simulator"><span class="i-en">📝 Exam Simulator</span><span class="i-ar">📝 محاكي الامتحان</span></a>
+  <a href="#practice"><span class="i-en">🧠 Practice</span><span class="i-ar">🧠 تدريبات</span></a>
+  <a href="#rapid"><span class="i-en">⚡ Rapid Facts</span><span class="i-ar">⚡ حقائق سريعة</span></a>
+  <a href="#defs"><span class="i-en">📖 Definitions</span><span class="i-ar">📖 التعريفات</span></a>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ EXAM INTEL ============ -->
+<section id="intel">
+  <h2><span class="num" style="background:#dc2626">🎯</span><span class="i-en">Last Year's Exam — Decoded</span><span class="i-ar">امتحان السنة اللي فاتت — متشرّح بالكامل</span></h2>
+  <div class="card">
+    <table>
+      <tr><th><span class="i-en">Question</span><span class="i-ar">السؤال</span></th><th><span class="i-en">Marks</span><span class="i-ar">الدرجات</span></th><th><span class="i-en">What it was</span><span class="i-ar">المحتوى</span></th><th><span class="i-en">From</span><span class="i-ar">المصدر</span></th></tr>
+      <tr><td>Q1-A</td><td>16</td><td><span class="i-en">16 MCQ / True-False (Earth facts, hazards, soil, rocks, magnetics)</span><span class="i-ar">١٦ اختيار/صح وخطأ (حقائق الأرض، المخاطر، التربة، الصخور، المغناطيسية)</span></td><td><span class="i-en">All lectures</span><span class="i-ar">كل المحاضرات</span></td></tr>
+      <tr><td>Q1-B</td><td>4</td><td><span class="i-en">Draw + explain GPR, 3 applications</span><span class="i-ar">رسم وشرح GPR + ٣ تطبيقات</span></td><td><span class="i-en">Lec 5–6</span><span class="i-ar">م٥–٦</span></td></tr>
+      <tr><td>Q2-A</td><td>8</td><td><span class="i-en">Deere &amp; Miller from a load–ΔL table</span><span class="i-ar">دير وميلر من جدول حمل–ΔL</span></td><td><span class="i-en">Lec 3</span><span class="i-ar">م٣</span></td></tr>
+      <tr><td>Q2-B</td><td>2</td><td><span class="i-en">List the methods of electrical survey</span><span class="i-ar">اذكر طرق المسح الكهربائي</span></td><td><span class="i-en">Lec 5–6</span><span class="i-ar">م٥–٦</span></td></tr>
+      <tr><td>Q3-A</td><td>4</td><td><span class="i-en">Define: porosity, geophysics, mantle, atom</span><span class="i-ar">عرّف: المسامية، الجيوفيزياء، الوشاح، الذرة</span></td><td><span class="i-en">Mixed</span><span class="i-ar">متنوع</span></td></tr>
+      <tr><td>Q3-B</td><td>6</td><td><span class="i-en">Core Recovery + RQD + classify</span><span class="i-ar">CR + RQD + التصنيف</span></td><td><span class="i-en">Lec 3</span><span class="i-ar">م٣</span></td></tr>
+      <tr><td>Q4-A</td><td>4</td><td><span class="i-en">Compare: 2 vs 3-phase (drawing); rock types by origin</span><span class="i-ar">قارن: نظام ثنائي وثلاثي الأطوار (بالرسم)؛ أنواع الصخور حسب النشأة</span></td><td><span class="i-en">Lec 4 + 2</span><span class="i-ar">م٤ + م٢</span></td></tr>
+      <tr><td>Q4-B</td><td>6</td><td><span class="i-en">Soil sample: find w<sub>c</sub>, e, S<sub>r</sub></span><span class="i-ar">عينة تربة: أوجد w<sub>c</sub>، e، S<sub>r</sub></span></td><td><span class="i-en">Lec 4</span><span class="i-ar">م٤</span></td></tr>
+    </table>
+    <div class="tip">💡 <span class="i-en">The numeric questions were <b>the lecture examples with different numbers</b>. Redo every example cold and ~26 marks are yours before MCQs.</span><span class="i-ar">المسائل الحسابية كانت <b>هي هي أمثلة المحاضرات بس بأرقام تانية</b>. لو حليت كل مثال لوحدك من غير ما تبص في الحل، يبقى ضمنت حوالي ٢٦ درجة قبل ما توصل لأسئلة الاختيار أصلاً.</span></div>
+  </div>
+</section>
+
+<!-- ============ LECTURE 1 INTRO ============ -->
+<section id="lec1">
+  <h2><span class="num" style="background:var(--l1)">1A</span><span class="i-en">Introduction to Geology</span><span class="i-ar">مقدمة في الجيولوجيا</span> <span class="chip" style="background:var(--l1)"><span class="i-en">pages 1–30</span><span class="i-ar">ص ١–٣٠</span></span></h2>
+  <div class="card">
+    <ul class="check">
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Geology definition</b><span class="pd">Geo (Earth) + Logis (study) = study of the Earth and its systems.</span></span><span class="i-ar"><b class="pt">تعريف الجيولوجيا</b><span class="pd">Geo (الأرض) + Logis (علم) = علم دراسة الأرض وأنظمتها.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">10 branches of geology</b><span class="pd">Know a one-line definition of each:</span><span class="tags"><span>Mining</span><span>Petroleum</span><span>Geophysics</span><span>Hydrogeology</span><span>Structural</span><span>Economic</span><span>Environmental</span><span>Historical</span><span>Geochemistry</span><span class="hot">Engineering Geology</span></span></span><span class="i-ar"><b class="pt">فروع الجيولوجيا العشرة</b><span class="pd">احفظ تعريف سطر واحد لكل فرع:</span><span class="tags"><span>التعدين</span><span>البترول</span><span>الجيوفيزياء</span><span>المياه الجوفية</span><span>التركيبية</span><span>الاقتصادية</span><span>البيئية</span><span>التاريخية</span><span>الجيوكيمياء</span><span class="hot">الجيولوجيا الهندسية</span></span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Engineering geology definition</b><span class="pd">applying geological sciences to assure geological factors in the <b>Location, Design, Construction, Operation &amp; Maintenance</b> of engineering works.</span></span><span class="i-ar"><b class="pt">تعريف الجيولوجيا الهندسية</b><span class="pd">تطبيق العلوم الجيولوجية لضمان العوامل الجيولوجية في <b>الموقع والتصميم والإنشاء والتشغيل والصيانة</b> للأعمال الهندسية.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Why important</b><span class="pd">Used for developments, government &amp; military sites, and public works:</span><span class="tags"><span>Drainage</span><span>Power plants</span><span>Treatment plants</span><span>Pipelines</span><span>Tunnels</span><span>Canals</span><span>Dams</span><span>Reservoirs</span><span>Foundations</span><span>Railroads</span><span>Highways</span><span>Bridges</span><span>Airports</span></span></span><span class="i-ar"><b class="pt">أهميتها</b><span class="pd">بتتعمل للمشاريع السكنية والتجارية والصناعية، والمنشآت الحكومية والعسكرية، والأعمال العامة:</span><span class="tags"><span>الصرف</span><span>محطات كهرباء</span><span>محطات معالجة</span><span>خطوط أنابيب</span><span>أنفاق</span><span>قنوات</span><span>سدود</span><span>خزانات</span><span>أساسات</span><span>سكك حديدية</span><span>طرق</span><span>جسور</span><span>مطارات</span></span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">The 10 geo-hazards</b><span class="tags"><span>① Fault rupture</span><span>② Seismic: shaking · liquefaction · tsunami</span><span>③ Landslide / mudflow / rockfall</span><span>④ Unstable slopes</span><span>⑤ Erosion</span><span>⑥ Heave (frost)</span><span>⑦ Ground subsidence</span><span>⑧ Volcanic hazards</span><span>⑨ Weak &amp; collapsible soils</span><span>⑩ Shallow groundwater / seepage</span></span></span><span class="i-ar"><b class="pt">المخاطر الجيولوجية العشرة</b><span class="tags"><span>① تمزق الصدوع</span><span>② زلزالية: اهتزاز · تسييل · تسونامي</span><span>③ انهيارات / تدفقات طينية / سقوط صخور</span><span>④ ميول غير مستقرة</span><span>⑤ التعرية</span><span>⑥ الانتفاخ (التجمد)</span><span>⑦ هبوط الأرض</span><span>⑧ مخاطر بركانية</span><span>⑨ تربة ضعيفة وانهيارية</span><span>⑩ مياه جوفية ضحلة / تسرب</span></span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Role of engineering geology</b><span class="pd"><b>Before</b> construction (site selection, avoid landslides/faults, soil &amp; rock testing, groundwater regime) · <b>During</b> (solve hazards that appear) · <b>After</b> (mitigate new hazards from nature or human activity).</span></span><span class="i-ar"><b class="pt">دور الجيولوجيا الهندسية</b><span class="pd"><b>قبل</b> الإنشاء (اختيار الموقع، تجنب الانهيارات والصدوع، اختبار التربة والصخور، نظام المياه الجوفية) · <b>أثناء</b> (حل أي خطر جيولوجي يظهر) · <b>بعد</b> (تخفيف المخاطر الجديدة الطبيعية أو البشرية).</span></span></span></li>
+    </ul>
+    <div class="exam">🎯 <span class="i-en"><b>MCQ trap (asked twice!):</b> Pipelines, dams, canals, power plants = <i>engineering works</i>, NOT geo-hazards. Liquefaction, erosion, fault rupture, collapsible soils, heave = <i>geo-hazards</i>. "Pipeline explosion" is NOT a geo-hazard. Also: <b>geothermal is NOT a branch of geology</b>.</span><span class="i-ar"><b>خد بالك من الفخ ده (جه مرتين!):</b> الأنابيب والسدود والقنوات ومحطات الكهرباء دي <i>أعمال هندسية</i> مش مخاطر. التسييل والتعرية وتمزق الصدوع والتربة الانهيارية والانتفاخ دي <i>المخاطر الجيولوجية</i>. «انفجار الأنابيب» مش خطر جيولوجي. وكمان: <b>geothermal مش فرع من فروع الجيولوجيا</b>.</span></div>
+  </div>
+</section>
+
+<!-- ============ LECTURE 1 EARTH ============ -->
+<section id="lec2">
+  <h2><span class="num" style="background:var(--l1)">1B</span><span class="i-en">Planet Earth</span><span class="i-ar">كوكب الأرض</span> <span class="chip" style="background:var(--l1)"><span class="i-en">pages 31–54</span><span class="i-ar">ص ٣١–٥٤</span></span></h2>
+  <div class="card">
+    <ul class="check">
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Earth characteristics</b><span class="tags"><span>Formed ~4.57 billion yrs ago</span><span>Diameter 12,700–12,750 km</span><span>Orbit: 365.25 days @ 29.7 km/s</span><span>Spin: 23 h 56 min</span><span>Density 5.25 t/m³</span><span>93% = Fe · O · Si · Mg</span></span></span><span class="i-ar"><b class="pt">خصائص الأرض</b><span class="tags"><span>اتكوّنت من ~٤٫٥٧ مليار سنة</span><span>القطر ١٢٧٠٠–١٢٧٥٠ كم</span><span>حول الشمس: ٣٦٥٫٢٥ يوم بسرعة ٢٩٫٧ كم/ث</span><span>حول نفسها: ٢٣ س ٥٦ د</span><span>الكثافة ٥٫٢٥ طن/م³</span><span>٩٣٪ = حديد · أكسجين · سيليكون · ماغنسيوم</span></span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Early heat-up</b><span class="pd">due to: <b>collision, compression, radioactivity</b> of elements.</span></span><span class="i-ar"><b class="pt">التسخين المبكر للأرض</b><span class="pd">بسبب: <b>التصادم والانضغاط والنشاط الإشعاعي</b> للعناصر.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Global chemical differentiation</b><span class="pd">about 100 million years after Earth formed, iron melted at 400–800 km depth. Heavy elements (molten iron) sank to the core; light ones (oxygen, silica) floated up.</span></span><span class="i-ar"><b class="pt">التمايز الكيميائي الشامل</b><span class="pd">بعد ~١٠٠ مليون سنة من التكوّن، انصهر الحديد عند عمق ٤٠٠–٨٠٠ كم؛ العناصر الثقيلة هبطت للُّب والخفيفة (الأكسجين والسيليكا) طفت للسطح.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Physical layers (5)</b><span class="pd">Lithosphere (rigid; crust + upper mantle down to ~100 km; forms the plates) · Asthenosphere (weak, soft layer that lets the plates move) · Deep mantle (~400–2900 km) · Outer core (liquid iron) · Inner core (solid iron).</span></span><span class="i-ar"><b class="pt">الطبقات الفيزيائية (٥)</b><span class="pd">الغلاف الصخري (صلب، القشرة + أعلى الوشاح حتى ~١٠٠ كم، يكوّن الألواح) · الأسثينوسفير (ضعيف لدن يسمح بحركة الألواح) · الوشاح العميق (~٤٠٠–٢٩٠٠ كم) · اللب الخارجي (حديد سائل) · اللب الداخلي (حديد صلب).</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Earth "spheres"</b><span class="pd">Lithosphere/Geosphere (rocks) · Hydrosphere (water) · Biosphere (life) · Atmosphere (gases: Troposphere, Stratosphere, Mesosphere, Thermosphere).</span></span><span class="i-ar"><b class="pt">أغلفة الأرض</b><span class="pd">الغلاف الصخري (الصخور) · المائي (الماء) · الحيوي (الكائنات) · الجوي (الغازات: تروبوسفير، ستراتوسفير، ميزوسفير، ثرموسفير).</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">3 main layers</b><span class="pd">Crust, Mantle, Core. Inner core = <b>solid Ni+Fe</b>, ~4300 °C, can't melt (pressure). Outer core = <b>liquid Ni+Fe</b>, ~3700 °C — its spin causes <b>Earth's magnetism</b>. Mantle = ~80% of volume, rich in Mg+Si; asthenosphere = upper mantle. Crust: Oceanic vs Continental.</span></span><span class="i-ar"><b class="pt">الطبقات الرئيسية الثلاث</b><span class="pd">القشرة، الوشاح، اللب. اللب الداخلي = <b>نيكل وحديد صلب</b> ~٤٣٠٠°م لا ينصهر بسبب الضغط. اللب الخارجي = <b>سائل</b> ~٣٧٠٠°م — دورانه حول الداخلي يسبب <b>مغناطيسية الأرض</b>. الوشاح = ~٨٠٪ من الحجم، غني بالماغنسيوم والسيليكون. القشرة: محيطية وقارية.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Geologic cycle = 4 sub-cycles</b><span class="pd">① Hydrologic ② Tectonic ③ Geochemical (CO₂) ④ Rock cycle.</span></span><span class="i-ar"><b class="pt">الدورة الجيولوجية = ٤ دورات فرعية</b><span class="pd">① المائية ② التكتونية ③ الجيوكيميائية (CO₂) ④ دورة الصخور.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Shape &amp; records</b><span class="tags"><span>Shape: oblate spheroid</span><span class="hot">Avg diameter 12,742 km</span><span>Everest 8,850 m</span><span>Mariana Trench 11,035 m</span><span class="hot">Age 4.54 billion yrs</span><span>Earliest life ≥ 3.5 billion yrs</span></span></span><span class="i-ar"><b class="pt">الشكل والأرقام القياسية</b><span class="tags"><span>الشكل: كروي مفلطح</span><span class="hot">متوسط القطر ١٢٧٤٢ كم</span><span>إيفرست ٨٨٥٠ م</span><span>خندق ماريانا ١١٠٣٥ م</span><span class="hot">العمر ٤٫٥٤ مليار سنة</span><span>أقدم حياة ≥ ٣٫٥ مليار سنة</span></span></span></span></li>
+    </ul>
+    <div class="exam">🎯 <span class="i-en">Last year: age = <b>4.54 billion years</b>; avg diameter = <b>12.742 km</b> (Everest 8,850 m and Mariana 11,035 m appeared as wrong options!); magnetic field from the <b>core</b>, not the mantle (T/F).</span><span class="i-ar">السنة اللي فاتت: عمر الأرض = <b>٤٫٥٤ مليار سنة</b>، ومتوسط القطر = <b>١٢٫٧٤٢ كم</b> (حاطين إيفرست وماريانا كاختيارات غلط عشان يلخبطوك!)، والمجال المغناطيسي مصدره <b>اللب</b> مش الوشاح (سؤال صح وغلط).</span></div>
+  </div>
+</section>
+
+<!-- ============ LECTURE 2 ============ -->
+<section id="lec3">
+  <h2><span class="num" style="background:var(--l2)">2</span><span class="i-en">Minerals &amp; Rocks</span><span class="i-ar">المعادن والصخور</span> <span class="chip" style="background:var(--l2)"><span class="i-en">pages 55–82</span><span class="i-ar">ص ٥٥–٨٢</span></span></h2>
+  <div class="card">
+    <ul class="check">
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Atom</b><span class="pd">smallest division of an element that still has its chemical properties. <b>Element</b> — atoms that in pure form can't be divided further without changing properties.</span></span><span class="i-ar"><b class="pt">الذرة</b><span class="pd">أصغر جزء من العنصر يحتفظ بخواصه الكيميائية. <b>العنصر</b> — ذرات لا يمكن تقسيمها في صورتها النقية دون تغيّر خواصها.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Elements in the crust</b><span class="pd"><b>Iron ≈ 5.63%</b> (was an MCQ!). Oxygen and Silicon are the most abundant.</span></span><span class="i-ar"><b class="pt">عناصر القشرة الأرضية</b><span class="pd"><b>الحديد ≈ ٥٫٦٣٪</b> (جه في الاختيارات!). الأكسجين والسيليكون الأكثر وفرة.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Mineral</b><span class="pd">naturally occurring, has a chemical formula, usually solid, inorganic, crystal structure. Example: <b>Quartz = SiO₂</b>.</span></span><span class="i-ar"><b class="pt">المعدن</b><span class="pd">مادة طبيعية لها صيغة كيميائية، عادة صلبة وغير عضوية وذات بناء بلوري. مثال: <b>الكوارتز = SiO₂</b>.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Rock</b><span class="pd">naturally occurring aggregate of minerals; single-mineral rocks = <b>monomineralic</b>.</span></span><span class="i-ar"><b class="pt">الصخر</b><span class="pd">تجمع طبيعي من المعادن؛ الصخر أحادي المعدن = <b>monomineralic</b>.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">3 rock types by origin ⭐</b><span class="pd"><b>Igneous</b> (crystallization of magma) · <b>Sedimentary</b> (from pre-existing rocks by weathering + erosion) · <b>Metamorphic</b> (change under heat + pressure on buried rocks). The <b>rock cycle</b> connects them continuously.</span></span><span class="i-ar"><b class="pt">أنواع الصخور الثلاثة حسب النشأة ⭐</b><span class="pd"><b>نارية</b> (تبلور الصهارة/الماجما) · <b>رسوبية</b> (من صخور سابقة بالتجوية + التعرية) · <b>متحولة</b> (تغيّر تحت الحرارة والضغط للصخور المدفونة). و<b>دورة الصخور</b> تربطها باستمرار.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Igneous types</b>: <b>Extrusive (volcanic)</b><span class="pd">erupts as lava, quick cooling → <b>tiny crystals</b>. <b>Intrusive (plutonic)</b> — deep below surface, slow cooling → <b>large crystals</b> (exact MCQ!).</span></span><span class="i-ar"><b class="pt">أنواع النارية</b>: <b>سطحية (بركانية)</b><span class="pd">تخرج كلافا، تبريد سريع → <b>بلورات صغيرة</b>. <b>جوفية (بلوتونية)</b> — في العمق، تبريد بطيء → <b>بلورات كبيرة</b> (سؤال اختيار جه بالنص!).</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Sedimentary</b><span class="pd">weathering + erosion → transport → deposition; <b>75% of continental outcrops</b>; record past events; economically very important.</span></span><span class="i-ar"><b class="pt">الرسوبية</b><span class="pd">تجوية + تعرية → نقل → ترسيب؛ <b>٧٥٪ من المكاشف القارية</b>؛ تسجل الأحداث القديمة؛ مهمة اقتصادياً جداً.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Mechanical (clastic)</b>: ① <b>Breccia</b><span class="pd">broken <i>angular</i> fragments cemented (MCQ!) ② <b>Conglomerate</b> — rounded <i>pebbles</i> (beaches/rivers) ③ <b>Sandstone</b> — grains 0.06–2 mm (often quartz), cemented by silica/carbonates/clay/iron oxides ④ <b>Mudstone</b> — clay &lt; 0.05 mm, quiet low-energy environments (lakes, deep sea).</span></span><span class="i-ar"><b class="pt">الرسوبية الميكانيكية</b>: ① <b>البريشيا</b><span class="pd">شظايا <i>زاويّة</i> مكسورة ملتحمة (اختيار!) ② <b>الكونجلوميرات</b> — حصى <i>مستديرة</i> (شواطئ/أنهار) ③ <b>الحجر الرملي</b> — حبيبات ٠٫٠٦–٢ مم (كوارتز غالباً) ملتحمة بالسيليكا/الكربونات/الطين/أكاسيد الحديد ④ <b>الحجر الطيني</b> — طين &lt; ٠٫٠٥ مم، بيئات هادئة (بحيرات، أعماق البحر).</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Chemical</b>: ① <b>Limestone</b><span class="pd">&gt;50% carbonate, dominated by calcite, contains shells/skeletons, soluble in water ② <b>Dolomite</b> — limestone with calcite replaced by magnesium carbonate.</span></span><span class="i-ar"><b class="pt">الرسوبية الكيميائية</b>: ① <b>الحجر الجيري</b><span class="pd">أكثر من ٥٠٪ كربونات يغلب عليها الكالسيت، يحتوي أصدافاً وهياكل، قابل للذوبان ② <b>الدولوميت</b> — حجر جيري استُبدل كالسيته بكربونات الماغنسيوم.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Metamorphic</b><span class="pd">changed (meta) form (morphic) under <b>heat, pressure, chemical activity</b>; grain size increases + new minerals. Examples: <b>Marble, Gneiss, Schist</b>.</span></span><span class="i-ar"><b class="pt">المتحولة</b><span class="pd">تغيّر الشكل تحت <b>الحرارة والضغط والنشاط الكيميائي</b>؛ يزداد حجم الحبيبات وتنشأ معادن جديدة. أمثلة: <b>الرخام، النيس، الشيست</b>.</span></span></span></li>
+    </ul>
+    <div class="tip">💡 <span class="i-en">Memory hook: <b>B</b>reccia = <b>B</b>roken angular bits · <b>C</b>onglomerate = <b>C</b>obbles rounded. Angular vs rounded is the classic exam distinction.</span><span class="i-ar">حيلة للحفظ: البريشيا = قطع مكسّرة <b>بزوايا حادة</b> · الكونجلوميرات = حصى <b>مدوّرة ناعمة</b>. الفرق ده هو سؤال الامتحان الكلاسيكي.</span></div>
+  </div>
+</section>
+<!-- ============ LECTURE 3 ============ -->
+<section id="lec4">
+  <h2><span class="num" style="background:var(--l3)">3</span><span class="i-en">Rock Classification &amp; Mechanical Properties</span><span class="i-ar">تصنيف الصخور وخواصها الميكانيكية</span> <span class="chip" style="background:var(--l3)"><span class="i-en">pages 83–110</span><span class="i-ar">ص ٨٣–١١٠</span></span> <span class="marks"><span class="i-en">≈14 marks last year</span><span class="i-ar">≈١٤ درجة السنة اللي فاتت</span></span></h2>
+  <div class="card">
+    <ul class="check">
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Unconfined (uniaxial) compression test</b><span class="pd">gives compressive strength, Poisson's ratio, Young's modulus. Sample <b>L/D = 2.0</b> (e.g. D=50 mm, L=100 mm).</span></span><span class="i-ar"><b class="pt">اختبار الضغط غير المحصور (أحادي المحور)</b><span class="pd">يعطي مقاومة الضغط ونسبة بواسون ومعامل يونج. العينة <b>L/D = 2.0</b> (مثلاً D=50 مم، L=100 مم).</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Deere &amp; Miller classification ⭐</b><span class="pd">strength letter (A–E) + modulus ratio letter (H/M/L). Full recipe below.</span></span><span class="i-ar"><b class="pt">تصنيف دير وميلر ⭐</b><span class="pd">حرف المقاومة (A–E) + حرف نسبة المعامل (H/M/L). الطريقة كاملة بالأسفل.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Core Recovery (CR)</b> &amp; <b>Rock Quality Designation (RQD) ⭐</b><span class="pd">formulas + table below.</span></span><span class="i-ar"><b class="pt">استرجاع العينات (CR)</b> و<b>دليل جودة الصخر (RQD) ⭐</b><span class="pd">القوانين والجدول بالأسفل.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Tensile tests</b><span class="pd">Direct, and <b>Indirect (Brazilian)</b>: σ<sub>t</sub> = 2P/(πDL). Relation: <b>σ<sub>t</sub> = 0.10 σ<sub>c</sub></b>.</span></span><span class="i-ar"><b class="pt">اختبارات الشد</b><span class="pd">مباشر، و<b>غير مباشر (البرازيلي)</b>: σ<sub>t</sub> = 2P/(πDL). والعلاقة: <b>σ<sub>t</sub> = 0.10 σ<sub>c</sub></b>.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Rock failure types (4)</b><span class="pd">① Splitting ② Shear failure ③ Multiple shear fractures ④ Tensile failure.</span></span><span class="i-ar"><b class="pt">أنواع انهيار الصخر (٤)</b><span class="pd">① الانشطار ② انهيار القص ③ كسور قص متعددة ④ انهيار الشد.</span></span></span></li>
+    </ul>
+
+    <h3><span class="i-en">📐 Deere &amp; Miller — the full recipe</span><span class="i-ar">📐 دير وميلر — الطريقة كاملة</span></h3>
+    <div class="formula">A = (π/4)·D² &nbsp;|&nbsp; σ = P/A &nbsp;|&nbsp; ε = ΔL/L &nbsp;|&nbsp; <b>E<sub>t50</sub> = Δy/Δx</b> (tangent at 50% σ<sub>ult</sub>) &nbsp;|&nbsp; <b>MR = E<sub>t50</sub>/σ<sub>ult</sub></b></div>
+    <table>
+      <tr><th><span class="i-en">Strength class</span><span class="i-ar">فئة المقاومة</span></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr>
+      <tr><td><span class="i-en">Description</span><span class="i-ar">الوصف</span></td><td><span class="i-en">Very high</span><span class="i-ar">عالية جداً</span></td><td><span class="i-en">High</span><span class="i-ar">عالية</span></td><td><span class="i-en">Medium</span><span class="i-ar">متوسطة</span></td><td><span class="i-en">Low</span><span class="i-ar">منخفضة</span></td><td><span class="i-en">Very low</span><span class="i-ar">منخفضة جداً</span></td></tr>
+      <tr><td>σ<sub>ult</sub> (kg/cm²)</td><td>&gt; 2250</td><td>2250–1125</td><td>1125–562</td><td>562–281</td><td>&lt; 281</td></tr>
+    </table>
+    <table>
+      <tr><th><span class="i-en">Modulus ratio class</span><span class="i-ar">فئة نسبة المعامل</span></th><th>H (High)</th><th>M (Medium)</th><th>L (Low)</th></tr>
+      <tr><td>MR = E<sub>t50</sub>/σ<sub>ult</sub></td><td>&gt; 500</td><td>200 – 500</td><td>&lt; 200</td></tr>
+    </table>
+    <div class="solved">✔ <span class="i-en"><b>Worked Example 1 (lecture):</b> D=50 mm, L=100 mm, failure at 20 ton, E<sub>t50</sub>=5×10⁵ kg/cm².</span><span class="i-ar"><b>مثال محلول ١ (من المحاضرة):</b> D=50 مم، L=100 مم، الانهيار عند ٢٠ طن، E<sub>t50</sub>=5×10⁵ كجم/سم².</span><br>
+    A = π/4×(5)² = 19.62 cm² → σ<sub>ult</sub> = 20,000/19.62 = <b>1019.11 kg/cm²</b> → 562–1125 → <b>C</b>.<br>
+    MR = 5×10⁵/1019.11 = <b>294.4</b> → <b>M</b>. → <span class="i-en">Rock is</span><span class="i-ar">الصخر</span> <b>CM</b> ✅</div>
+    <div class="solved">✔ <span class="i-en"><b>Worked Example 2 (lecture — SAME question appeared in last year's final with loads instead of stresses!):</b> stress–strain table → plot → σ<sub>ult</sub> = <b>1500 kg/cm²</b> → <b>B</b>.</span><span class="i-ar"><b>مثال محلول ٢ (نفس السؤال جاء في امتحان السنة اللي فاتت بأحمال بدلاً من إجهادات!):</b> جدول إجهاد–انفعال → ارسم المنحنى → σ<sub>ult</sub> = <b>1500 كجم/سم²</b> → <b>B</b>.</span><br>
+    <span class="i-en">Tangent at 50% σ<sub>ult</sub> (=750):</span><span class="i-ar">المماس عند ٥٠٪ من σ<sub>ult</sub> (=٧٥٠):</span> Δy = 1200−400 = 800, Δx = (0.58−0.1)% = 0.0048 → E<sub>t50</sub> = <b>166,667 kg/cm²</b>.<br>
+    MR = 166,667/1500 = <b>111.1</b> → <b>L</b>. → <b>BL</b> ✅<br>
+    <small>⚠ <span class="i-en">If the exam gives <b>Load (kg)</b> and <b>ΔL (mm)</b> (like last year): first convert each row → σ = P/A and ε = ΔL/L, THEN plot. Strains in the lecture are in % — be consistent (0.48% = 0.0048).</span><span class="i-ar">لو أعطاك الامتحان <b>حمل (كجم)</b> و<b>ΔL (مم)</b> (مثل السنة اللي فاتت): حوّل كل صف أولاً → σ = P/A و ε = ΔL/L ثم ارسم. الانفعالات في المحاضرة بالنسبة المئوية — انتبه للوحدات (0.48% = 0.0048).</span></small></div>
+
+    <h3><span class="i-en">📐 Core Recovery &amp; RQD</span><span class="i-ar">📐 استرجاع العينات و RQD</span></h3>
+    <div class="formula"><b>CR</b> = Σ(all samples) / total core run &nbsp;|&nbsp; <b>RQD</b> = Σ(samples ≥ 10*) / total core run<br><small>*<span class="i-en">apply the "≥10" cutoff in the same unit the question uses (lecture example used mm)</span><span class="i-ar">طبّق شرط "≥10" بنفس وحدة السؤال (مثال المحاضرة كان بالمليمتر)</span></small></div>
+    <table>
+      <tr><th>RQD %</th><td>0–25</td><td>25–50</td><td><b>50–75</b></td><td>75–90</td><td>90–100</td></tr>
+      <tr><th><span class="i-en">Quality</span><span class="i-ar">الجودة</span></th><td><span class="i-en">Very poor</span><span class="i-ar">رديء جداً</span></td><td><span class="i-en">Poor</span><span class="i-ar">رديء</span></td><td><b><span class="i-en">Fair</span><span class="i-ar">متوسط</span></b></td><td><span class="i-en">Good</span><span class="i-ar">جيد</span></td><td><span class="i-en">Excellent</span><span class="i-ar">ممتاز</span></td></tr>
+    </table>
+    <div class="solved">✔ <span class="i-en"><b>Worked Example 3 (lecture):</b> core run 300 mm; samples 12, 40, 29, 6, 9, 12, 3, 35, 3, 18, 26, 39 mm.</span><span class="i-ar"><b>مثال محلول ٣ (من المحاضرة):</b> طول الجسّة ٣٠٠ مم؛ العينات 12, 40, 29, 6, 9, 12, 3, 35, 3, 18, 26, 39 مم.</span><br>
+    CR = 232/300 = <b>77.3%</b> · RQD = (12+40+29+12+35+18+26+39)/300 ≈ <b>70%</b> → <span class="i-en"><b>Fair</b></span><span class="i-ar"><b>متوسط (Fair)</b></span> ✅</div>
+    <div class="solved">✔ <span class="i-en"><b>Brazilian test example (lecture):</b> limestone, D=7.5 cm, L=15 cm, P=2.25 t.</span><span class="i-ar"><b>مثال الاختبار البرازيلي (من المحاضرة):</b> حجر جيري، D=7.5 سم، L=15 سم، P=2.25 طن.</span><br>
+    σ<sub>t</sub> = 2×2250/(π×7.5×15) = <b>12.73 kg/cm²</b> → σ<sub>c</sub> = σ<sub>t</sub>/0.10 = <b>127.3 kg/cm²</b> ✅</div>
+  </div>
+</section>
+
+<!-- ============ LECTURE 4 ============ -->
+<section id="lec5">
+  <h2><span class="num" style="background:var(--l4)">4</span><span class="i-en">Physical Properties of Soil</span><span class="i-ar">الخواص الفيزيائية للتربة</span> <span class="chip" style="background:var(--l4)"><span class="i-en">pages 111–130</span><span class="i-ar">ص ١١١–١٣٠</span></span> <span class="marks"><span class="i-en">≈12 marks last year</span><span class="i-ar">≈١٢ درجة السنة اللي فاتت</span></span></h2>
+  <div class="card">
+    <h3><span class="i-en">✅ The 7 properties — definitions + possible values (MCQ goldmine!)</span><span class="i-ar">✅ الخواص السبع — التعريفات والقيم الممكنة (منجم أسئلة اختيار!)</span></h3>
+    <table>
+      <tr><th><span class="i-en">Property</span><span class="i-ar">الخاصية</span></th><th><span class="i-en">Formula</span><span class="i-ar">القانون</span></th><th><span class="i-en">Possible values</span><span class="i-ar">القيم الممكنة</span></th></tr>
+      <tr><td><b><span class="i-en">Void ratio (e)</span><span class="i-ar">نسبة الفراغات (e)</span></b></td><td>e = V<sub>v</sub>/V<sub>s</sub></td><td>&lt;1 ✔ · =1 ✔ · <b>&gt;1 ✔ (<span class="i-en">can exceed 100%!</span><span class="i-ar">يمكن أن تتجاوز ١٠٠٪!</span>)</b> · =0 ✘</td></tr>
+      <tr><td><b><span class="i-en">Porosity (n)</span><span class="i-ar">المسامية (n)</span></b></td><td>n = V<sub>v</sub>/V<sub>t</sub></td><td><span class="i-en">always between 0 and 1 (never 0, 1, or &gt;1)</span><span class="i-ar">دائماً بين ٠ و١ (لا تساوي ٠ ولا ١ ولا تزيد عن ١)</span></td></tr>
+      <tr><td><b><span class="i-en">Degree of saturation (S<sub>r</sub>)</span><span class="i-ar">درجة التشبع (S<sub>r</sub>)</span></b></td><td>S<sub>r</sub> = V<sub>w</sub>/V<sub>v</sub></td><td><span class="i-en">0 = dry · 1 = saturated · between = wet/moist</span><span class="i-ar">٠ = جافة · ١ = مشبعة · بينهما = رطبة</span></td></tr>
+      <tr><td><b><span class="i-en">Water content (w<sub>c</sub>)</span><span class="i-ar">المحتوى المائي (w<sub>c</sub>)</span></b></td><td>w<sub>c</sub> = W<sub>w</sub>/W<sub>s</sub></td><td><span class="i-en">&lt;1 ✔ and =1 ✔ (can even exceed 1)</span><span class="i-ar">&lt;١ ✔ و =١ ✔ (وقد يتجاوز ١)</span></td></tr>
+      <tr><td><b><span class="i-en">Unit weight (γ)</span><span class="i-ar">وحدة الوزن (γ)</span></b></td><td>γ = W/V</td><td>γ<sub>w</sub> = 1 t/m³ = 10 kN/m³ = 1 g/cm³ = 62.4 lb/ft³</td></tr>
+      <tr><td><b><span class="i-en">Specific gravity (G<sub>s</sub>)</span><span class="i-ar">الوزن النوعي (G<sub>s</sub>)</span></b></td><td>G<sub>s</sub> = γ<sub>s</sub>/γ<sub>w</sub></td><td><span class="i-en">typically ~2.6–2.8 for soils</span><span class="i-ar">عادة ~٢٫٦–٢٫٨ للتربة</span></td></tr>
+      <tr><td><b><span class="i-en">Relative density (D<sub>r</sub>)</span><span class="i-ar">الكثافة النسبية (D<sub>r</sub>)</span></b></td><td>D<sub>r</sub> = (e<sub>max</sub>−e<sub>o</sub>)/(e<sub>max</sub>−e<sub>min</sub>)</td><td><b><span class="i-en">cohesionless soils only</span><span class="i-ar">للتربة غير المتماسكة فقط</span></b> · <span class="i-en">loosest = 0, densest = 1</span><span class="i-ar">الأكثر تفككاً = ٠، الأكثر دمكاً = ١</span></td></tr>
+    </table>
+
+    <h3><span class="i-en">📐 The 5 unit weights</span><span class="i-ar">📐 الكثافات الخمس</span></h3>
+    <table>
+      <tr><th><span class="i-en">Symbol</span><span class="i-ar">الرمز</span></th><th><span class="i-en">Name</span><span class="i-ar">الاسم</span></th><th><span class="i-en">Formula</span><span class="i-ar">القانون</span></th><th><span class="i-en">Note</span><span class="i-ar">ملاحظة</span></th></tr>
+      <tr><td>γ<sub>b</sub></td><td><span class="i-en">Bulk density</span><span class="i-ar">الكثافة الكلية</span></td><td>W<sub>t</sub>/V<sub>t</sub></td><td><span class="i-en">bulk = natural = total = wet = moist</span><span class="i-ar">الكلية = الطبيعية = الرطبة</span></td></tr>
+      <tr><td>γ<sub>d</sub></td><td><span class="i-en">Dry density</span><span class="i-ar">الكثافة الجافة</span></td><td>W<sub>s</sub>/V<sub>t</sub></td><td><span class="i-en">solids weight over TOTAL volume</span><span class="i-ar">وزن المواد الصلبة على الحجم الكلي</span></td></tr>
+      <tr><td>γ<sub>s</sub></td><td><span class="i-en">Density of solids</span><span class="i-ar">كثافة الجزء الصلب</span></td><td>W<sub>s</sub>/V<sub>s</sub></td><td><span class="i-en">solids over solids volume</span><span class="i-ar">الصلب على حجم الصلب</span></td></tr>
+      <tr><td>γ<sub>sat</sub></td><td><span class="i-en">Saturated density</span><span class="i-ar">الكثافة المشبعة</span></td><td>W<sub>t</sub>/V<sub>t</sub> <span class="i-en">(saturated)</span><span class="i-ar">(عند التشبع)</span></td><td><b>γ<sub>sat</sub> &gt; γ<sub>bulk</sub></b></td></tr>
+      <tr><td>γ<sub>sub</sub></td><td><span class="i-en">Submerged density</span><span class="i-ar">الكثافة المغمورة</span></td><td><b>γ<sub>sub</sub> = γ<sub>sat</sub> − γ<sub>w</sub></b></td><td><span class="i-en">buoyant unit weight</span><span class="i-ar">وزن الطفو</span></td></tr>
+    </table>
+
+    <h3><span class="i-en">✅ Phase systems ⭐ (drawing comparison was Q4-A!)</span><span class="i-ar">✅ أنظمة الأطوار ⭐ (مقارنة بالرسم في سؤال ٤-أ!)</span></h3>
+    <ul class="check">
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Two-phase system (Two-stage diagram)</b><span class="pd"><b>Dry</b> = Air + Solids (S<sub>r</sub>=0), or <b>Saturated</b> = Water + Solids (S<sub>r</sub>=1). Practice drawing both boxes!</span></span><span class="i-ar"><b class="pt">نظام ثنائي الأطوار</b><span class="pd">تربة <b>جافة</b> = هواء + مواد صلبة (S<sub>r</sub>=0)، أو <b>مشبعة</b> = ماء + مواد صلبة (S<sub>r</sub>=1). تدرّب على رسم المخططين!</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Three-phase system (Three-stage diagram)</b><span class="pd"><b>Wet/Moist</b> = Air + Water + Solids (0 &lt; S<sub>r</sub> &lt; 1).</span></span><span class="i-ar"><b class="pt">نظام ثلاثي الأطوار</b><span class="pd">تربة <b>رطبة</b> = هواء + ماء + مواد صلبة (0 &lt; S<sub>r</sub> &lt; 1).</span></span></span></li>
+    </ul>
+    <div class="exam">🎯 <span class="i-en">Last year's MCQs: fully saturated soil = <b>two-phase (soil + water)</b> · "weight of voids = weight of water" → <b>True</b> (air is weightless; asked TWICE) · D<sub>r</sub> cohesionless only → <b>True</b> · loosest D<sub>r</sub> = <b>0</b> · void ratio <b>can be &gt;100%</b>.</span><span class="i-ar">اختيارات السنة اللي فاتت: التربة المشبعة بالكامل = <b>نظام ثنائي الأطوار (تربة + ماء)</b> · «وزن الفراغات = وزن الماء» → <b>صح</b> (الهواء ملوش وزن، والسؤال ده جه مرتين في نفس الامتحان!) · D<sub>r</sub> للتربة غير المتماسكة بس → <b>صح</b> · أكتر حالة تفكك D<sub>r</sub> = <b>٠</b> · نسبة الفراغات <b>ممكن تعدّي ١٠٠٪</b>.</span></div>
+
+    <div class="solved">✔ <span class="i-en"><b>Worked example = last year's Q4-B:</b> W<sub>t</sub>=600 g, V<sub>t</sub>=365 cm³; oven-dried W<sub>s</sub>=543 g; G<sub>s</sub>=2.67. Find w<sub>c</sub>, e, S<sub>r</sub>.</span><span class="i-ar"><b>مثال محلول = سؤال ٤-ب من السنة اللي فاتت:</b> W<sub>t</sub>=600 جم، V<sub>t</sub>=365 سم³؛ بعد التجفيف W<sub>s</sub>=543 جم؛ G<sub>s</sub>=2.67. أوجد w<sub>c</sub>، e، S<sub>r</sub>.</span><br>
+    ① W<sub>w</sub> = 600−543 = 57 g → <b>w<sub>c</sub> = 57/543 = 10.5%</b><br>
+    ② V<sub>s</sub> = W<sub>s</sub>/(G<sub>s</sub>·γ<sub>w</sub>) = 543/2.67 = 203.4 cm³ → V<sub>v</sub> = 365−203.4 = 161.6 cm³ → <b>e = 161.6/203.4 = 0.795</b><br>
+    ③ V<sub>w</sub> = 57 cm³ → <b>S<sub>r</sub> = 57/161.6 = 35.3%</b><br>
+    <small><span class="i-en">Routine: W<sub>w</sub> → w<sub>c</sub> → V<sub>s</sub> via G<sub>s</sub> → V<sub>v</sub> → e → V<sub>w</sub> → S<sub>r</sub>.</span><span class="i-ar">الترتيب: W<sub>w</sub> ← w<sub>c</sub> ← V<sub>s</sub> بواسطة G<sub>s</sub> ← V<sub>v</sub> ← e ← V<sub>w</sub> ← S<sub>r</sub>.</span></small></div>
+  </div>
+</section>
+
+<!-- ============ LECTURE 5-6 ============ -->
+<section id="lec6">
+  <h2><span class="num" style="background:var(--l5)">5–6</span><span class="i-en">Engineering Geophysics</span><span class="i-ar">الجيوفيزياء الهندسية</span> <span class="chip" style="background:var(--l5)"><span class="i-en">pages 131–168</span><span class="i-ar">ص ١٣١–١٦٨</span></span> <span class="marks"><span class="i-en">≈7 marks last year</span><span class="i-ar">≈٧ درجات السنة اللي فاتت</span></span></h2>
+  <div class="card">
+    <ul class="check">
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Geophysics</b><span class="pd">the science of investigating the Earth using the methods and techniques of physics (1-mark definition!).</span></span><span class="i-ar"><b class="pt">الجيوفيزياء</b><span class="pd">علم دراسة الأرض باستخدام طرق وتقنيات الفيزياء (تعريف بدرجة!).</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Civil engineering applications</b><span class="tags"><span>Foundation testing: bedrock · dams · tunnels</span><span>Construction surveys: railway · highway · subway</span><span>Geotechnical: soil properties · compaction</span><span>Locating water</span><span>Old excavations: mineshafts · pipes · metal</span></span></span><span class="i-ar"><b class="pt">تطبيقات في الهندسة المدنية</b><span class="tags"><span>اختبار الأساسات: الصخر الأم · سدود · أنفاق</span><span>مسح الإنشاءات: سكك · طرق · مترو</span><span>جيوتقنية: خواص التربة · الدمك</span><span>تحديد أماكن المياه</span><span>حفريات قديمة: مناجم · أنابيب · معادن</span></span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">Divisions</b><span class="pd"><b>Global</b> (earthquakes, magnetic field, oceanography, meteorology) vs <b>Exploration</b> (oil, gas, water, minerals).</span></span><span class="i-ar"><b class="pt">الأقسام</b><span class="pd"><b>عالمية</b> (الزلازل، المجال المغناطيسي، المحيطات، الأرصاد) و<b>استكشافية</b> (نفط، غاز، مياه، معادن).</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">① Seismic method</b><span class="pd">measures seismic-wave travel time (most common). Applications: hydrocarbon + mineral exploration.</span></span><span class="i-ar"><b class="pt">① الطريقة السيزمية</b><span class="pd">قياس زمن انتقال الموجات الزلزالية (الأكثر شيوعاً). التطبيقات: استكشاف الهيدروكربونات والمعادن.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">② Magnetic method</b><span class="pd">Earth's field comes from the <b>core</b>; surveys record field variations. The 10 applications:</span><span class="tags"><span>Buried pipes / cables / tanks</span><span>Mapping buried material</span><span>Buried foundations</span><span>Archaeology</span><span>Fault studies</span><span>Ore deposits (massive sulphides)</span><span>Mineral exploration</span><span>Site investigation</span><span>Tectonics &amp; volcanology</span><span>Medical (MRI)</span></span><span class="pd" style="margin-top:6px">Variants: marine · airborne · cesium vapor magnetometer.</span></span><span class="i-ar"><b class="pt">② الطريقة المغناطيسية</b><span class="pd">مجال الأرض مصدره <b>اللب</b>؛ والمسح بيسجل تغيرات المجال. العشر تطبيقات:</span><span class="tags"><span>أنابيب / كابلات / خزانات مدفونة</span><span>رسم المواد المدفونة</span><span>أساسات مدفونة</span><span>مواقع أثرية</span><span>دراسة الصدوع</span><span>رواسب الخامات</span><span>استكشاف المعادن</span><span>فحص مواقع الإنشاء</span><span>التكتونية والبراكين</span><span>الطب (MRI)</span></span><span class="pd" style="margin-top:6px">أنواعه: بحري · جوي · ماسح بخار السيزيوم.</span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">③ Gravity method</b><span class="pd"><b>Gravimeter</b> = sensitive spring carrying a mass; records tiny gravity changes point-by-point along a grid.</span><span class="tags"><span>Ore exploration</span><span>Regional geology</span><span class="hot">Oil &amp; gas (always used!)</span><span>Dam sites · earthquakes · buried channels</span><span>Hydrology</span></span></span><span class="i-ar"><b class="pt">③ طريقة الجاذبية</b><span class="pd"><b>الجرافيميتر</b> = سوستة حساسة شايلة كتلة؛ بيسجل تغيرات الجاذبية الدقيقة نقطة بنقطة على شبكة.</span><span class="tags"><span>استكشاف الخامات</span><span>جيولوجيا إقليمية</span><span class="hot">نفط وغاز (بتتستخدم دايماً!)</span><span>سدود · زلازل · مجاري أنهار مدفونة</span><span>هيدرولوجيا</span></span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">④ Electrical methods</b><span class="pd">Subsurface formations have different electrical properties. Instrument: <b>Syscal</b>. The 4 survey methods (2-mark list!):</span><span class="tags"><span class="hot">⭐ Resistivity</span><span class="hot">⭐ Electromagnetic</span><span class="hot">⭐ Self-potential</span><span class="hot">⭐ Induced polarization</span></span><span class="pd" style="margin-top:6px">Applications:</span><span class="tags"><span>Metallic ores</span><span>Geothermal / temperature</span><span>Archaeology</span><span>Groundwater: salts · contaminants · porosity</span><span>Water table depth</span><span>Saltwater intrusion</span><span>Fractures &amp; faults</span><span>Dam stability</span><span>Overburden depth</span><span>Mafic dikes</span><span>Corrosion control</span><span>Lithology</span></span></span><span class="i-ar"><b class="pt">④ الطرق الكهربائية</b><span class="pd">التكوينات تحت السطح ليها خواص كهربائية مختلفة. الجهاز: <b>Syscal</b>. طرق المسح الأربعة (سؤال الدرجتين!):</span><span class="tags"><span class="hot">⭐ المقاومة النوعية</span><span class="hot">⭐ الكهرومغناطيسية</span><span class="hot">⭐ الجهد الذاتي</span><span class="hot">⭐ الاستقطاب المستحث</span></span><span class="pd" style="margin-top:6px">التطبيقات:</span><span class="tags"><span>خامات معدنية</span><span>حرارة باطن الأرض</span><span>آثار</span><span>مياه جوفية: أملاح · ملوثات · مسامية</span><span>عمق منسوب المياه</span><span>تداخل المياه المالحة</span><span>كسور وصدوع</span><span>استقرار السدود</span><span>عمق الغطاء الصخري</span><span>حماية من التآكل</span></span></span></span></li>
+      <li><input type="checkbox"><span><span class="i-en"><b class="pt">⑤ Ground Penetrating Radar (GPR) ⭐</b><span class="pd">DRAW: <b>laptop + central unit + antennae + wheel</b>; radar pulses sent into ground, reflections plotted as amplitude vs time (ns). Frequency: 50 MHz "snake" = deeper/rougher; 250–500 MHz = shallower/sharper. Humidity (dry vs humid soil) changes the image. Applications: pick any 3 (utilities/pipes, archaeology, buried foundations, soil profiling).</span></span><span class="i-ar"><b class="pt">⑤ الرادار المخترق للأرض (GPR) ⭐</b><span class="pd">ارسم: <b>لابتوب + وحدة مركزية + هوائيات + عجلة</b>؛ تُرسل نبضات رادار في الأرض وتُرسم الانعكاسات كسعة مقابل زمن (نانوثانية). التردد: 50 MHz هوائي "الثعبان" = أعمق وأقل دقة؛ 250–500 MHz = أقل عمقاً وأعلى دقة. الرطوبة (تربة جافة/رطبة) تغيّر الصورة. التطبيقات: اختر ٣ (مرافق/أنابيب، آثار، أساسات مدفونة، قطاعات التربة).</span></span></span></li>
+    </ul>
+    <div class="exam">🎯 <span class="i-en">Last year: 4 marks for the GPR drawing + 3 applications, 2 marks for the 4 electrical methods, plus the magnetics T/F (core, not mantle). Practice the GPR sketch twice — easiest 4 marks on the paper.</span><span class="i-ar">السنة اللي فاتت: ٤ درجات على رسم GPR مع ٣ تطبيقات، ودرجتين على إنك تكتب الطرق الكهربائية الأربعة، وسؤال صح وغلط عن المغناطيسية (اللب مش الوشاح). اترسم GPR مرتين بإيدك — دي أسهل ٤ درجات في الورقة كلها.</span></div>
+  </div>
+</section>
+<!-- ============ FORMULA SHEET ============ -->
+<section id="formulas">
+  <h2><span class="num" style="background:#0f172a">📐</span><span class="i-en">Master Formula Sheet — every rule in the course</span><span class="i-ar">ورقة القوانين الشاملة — كل قوانين المقرر</span></h2>
+  <div class="card">
+    <h3><span class="i-en">Rock testing (Lecture 3)</span><span class="i-ar">اختبارات الصخور (المحاضرة ٣)</span></h3>
+    <div class="grid2">
+      <div class="formula">A = (π/4)·D²</div>
+      <div class="formula">σ = P/A &nbsp;·&nbsp; ε = ΔL/L</div>
+      <div class="formula">L/D = 2.0 <small>(<span class="i-en">UCS sample</span><span class="i-ar">عينة الضغط</span>)</small></div>
+      <div class="formula">E<sub>t50</sub> = Δy/Δx <small>(<span class="i-en">tangent at 50% σ<sub>ult</sub></span><span class="i-ar">المماس عند ٥٠٪ من σ<sub>ult</sub></span>)</small></div>
+      <div class="formula"><b>MR = E<sub>t50</sub> / σ<sub>ult</sub></b> <small>(H &gt;500 · M 200–500 · L &lt;200)</small></div>
+      <div class="formula"><span class="i-en">Strength:</span><span class="i-ar">المقاومة:</span> A&gt;2250 · B 2250–1125 · C 1125–562 · D 562–281 · E&lt;281 kg/cm²</div>
+      <div class="formula"><b>CR</b> = ΣL<sub>samples</sub> / L<sub>total</sub></div>
+      <div class="formula"><b>RQD</b> = ΣL<sub>(≥10)</sub> / L<sub>total</sub></div>
+      <div class="formula"><b>σ<sub>t</sub> = 2P/(πDL)</b> <small>(Brazilian)</small></div>
+      <div class="formula"><b>σ<sub>t</sub> = 0.10 σ<sub>c</sub></b></div>
+    </div>
+    <h3><span class="i-en">Soil phase relations (Lecture 4)</span><span class="i-ar">علاقات أطوار التربة (المحاضرة ٤)</span></h3>
+    <div class="grid2">
+      <div class="formula">e = V<sub>v</sub>/V<sub>s</sub> &nbsp;·&nbsp; n = V<sub>v</sub>/V<sub>t</sub></div>
+      <div class="formula">S<sub>r</sub> = V<sub>w</sub>/V<sub>v</sub> &nbsp;·&nbsp; w<sub>c</sub> = W<sub>w</sub>/W<sub>s</sub></div>
+      <div class="formula">γ = W/V &nbsp;·&nbsp; γ<sub>b</sub> = W<sub>t</sub>/V<sub>t</sub></div>
+      <div class="formula">γ<sub>d</sub> = W<sub>s</sub>/V<sub>t</sub> &nbsp;·&nbsp; γ<sub>s</sub> = W<sub>s</sub>/V<sub>s</sub></div>
+      <div class="formula">γ<sub>sat</sub> = W<sub>t</sub>/V<sub>t</sub> (<span class="i-en">saturated</span><span class="i-ar">مشبعة</span>) &nbsp;·&nbsp; γ<sub>sat</sub> &gt; γ<sub>b</sub></div>
+      <div class="formula"><b>γ<sub>sub</sub> = γ<sub>sat</sub> − γ<sub>w</sub></b></div>
+      <div class="formula">G<sub>s</sub> = γ<sub>s</sub>/γ<sub>w</sub> &nbsp;→&nbsp; <b>V<sub>s</sub> = W<sub>s</sub>/(G<sub>s</sub>·γ<sub>w</sub>)</b></div>
+      <div class="formula">D<sub>r</sub> = (e<sub>max</sub>−e<sub>o</sub>)/(e<sub>max</sub>−e<sub>min</sub>) = (V<sub>max</sub>−V<sub>o</sub>)/(V<sub>max</sub>−V<sub>min</sub>)</div>
+      <div class="formula">γ<sub>w</sub> = 1 t/m³ = 10 kN/m³ = 1 g/cm³ = 1000 kg/m³ = 62.4 lb/ft³</div>
+      <div class="formula">W<sub>w</sub> = W<sub>t</sub> − W<sub>s</sub> &nbsp;·&nbsp; V<sub>v</sub> = V<sub>t</sub> − V<sub>s</sub> &nbsp;·&nbsp; V<sub>w</sub> = W<sub>w</sub>/γ<sub>w</sub></div>
+    </div>
+    <div class="tip">✅ <span class="i-en"><b>Verified:</b> this sheet contains every formula that appears in Lectures 1–6 (slides 84–130 hold all the math; Lectures 1, 2, 5, 6 are descriptive with no formulas).</span><span class="i-ar"><b>اتأكدنا:</b> الورقة دي فيها كل القوانين اللي جت في المحاضرات من ١ لـ ٦ (كل الحسابات موجودة في الشرائح ٨٤–١٣٠؛ والمحاضرات ١ و٢ و٥ و٦ كلها كلام وصفي من غير قوانين).</span></div>
+  </div>
+</section>
+
+<!-- ============ EXAM SIMULATOR ============ -->
+<section id="simulator">
+  <h2><span class="num" style="background:#dc2626">📝</span><span class="i-en">Exam Simulator — Spring 2025 Final (interactive)</span><span class="i-ar">محاكي الامتحان — نهائي ربيع ٢٠٢٥ (تفاعلي)</span></h2>
+  <div class="card">
+    <p><span class="i-en">The real exam, made clickable. MCQs grade instantly; written questions reveal a model answer. <i>(Exam questions are kept in English — that's the language of the actual paper.)</i></span><span class="i-ar">ده الامتحان الحقيقي بس تفاعلي. أسئلة الاختيار بتتصحح فوراً، والأسئلة المقالية ليها زرار يوريك الإجابة النموذجية. <i>(سايبين الأسئلة بالإنجليزي لأنها لغة الامتحان الفعلي.)</i></span></p>
+
+    <h3><span class="i-en">Question 1-A — MCQ (16 marks)</span><span class="i-ar">سؤال ١-أ — اختيارات (١٦ درجة)</span></h3>
+
+    <div class="q"><div class="qt">1. The age of the Earth is …</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) 2.10 billion years</button>
+      <button onclick="mcq(this,0)">b) 3.51 years</button>
+      <button data-ok onclick="mcq(this,1)">c) 4.54 billion years</button>
+      <button onclick="mcq(this,0)">d) 350 billion years</button></div>
+      <div class="fb">💡 <span class="i-en">Formed ~4.57 Ga, age = 4.54 billion years.</span><span class="i-ar">الأرض اتكوّنت من حوالي ٤٫٥٧ مليار سنة، وعمرها = ٤٫٥٤ مليار سنة.</span></div></div>
+
+    <div class="q"><div class="qt">2. Typical geologic hazards evaluated and mitigated by an engineering geologist include:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) Pipeline</button>
+      <button onclick="mcq(this,0)">b) Dam</button>
+      <button onclick="mcq(this,0)">c) Canal</button>
+      <button data-ok onclick="mcq(this,1)">d) Liquefaction</button></div>
+      <div class="fb">💡 <span class="i-en">Pipelines/dams/canals are engineering works; liquefaction is the hazard.</span><span class="i-ar">الأنابيب والسدود والقنوات دي أعمال هندسية؛ التسييل هو الخطر الجيولوجي.</span></div></div>
+
+    <div class="q"><div class="qt">3. Which of the following is not considered a branch of geology?</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) Mining Geology</button>
+      <button data-ok onclick="mcq(this,1)">b) Geothermal</button>
+      <button onclick="mcq(this,0)">c) Geochemistry</button>
+      <button onclick="mcq(this,0)">d) Hydrogeology</button></div>
+      <div class="fb">💡 <span class="i-en">The 10 branches don't include "geothermal".</span><span class="i-ar">الفروع العشرة مفيهومش "geothermal".</span></div></div>
+
+    <div class="q"><div class="qt">4. Typical geologic hazards evaluated and mitigated by an engineering geologist include:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) Power plant</button>
+      <button onclick="mcq(this,0)">b) Sewage water</button>
+      <button onclick="mcq(this,0)">c) Industrial areas</button>
+      <button data-ok onclick="mcq(this,1)">d) Erosion</button></div>
+      <div class="fb">💡 <span class="i-en">Erosion is hazard #5 in the lecture list.</span><span class="i-ar">التعرية هي الخطر رقم ٥ في ليستة المحاضرة.</span></div></div>
+
+    <div class="q"><div class="qt">5. All of the following are considered geo-hazards except:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) Fault rupture</button>
+      <button onclick="mcq(this,0)">b) Collapsible soils</button>
+      <button data-ok onclick="mcq(this,1)">c) Pipeline explosions</button>
+      <button onclick="mcq(this,0)">d) Heave of geological formations</button></div>
+      <div class="fb">💡 <span class="i-en">Pipeline explosions are man-made accidents, not geologic hazards.</span><span class="i-ar">انفجار الأنابيب ده حادث من صنع البشر، مش خطر جيولوجي.</span></div></div>
+
+    <div class="q"><div class="qt">6. The average diameter of Earth is about:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) 8850 m</button>
+      <button onclick="mcq(this,0)">b) 11035 m</button>
+      <button data-ok onclick="mcq(this,1)">c) 12.742 km</button>
+      <button onclick="mcq(this,0)">d) 14.456 km</button></div>
+      <div class="fb">💡 <span class="i-en">8850 = Everest, 11035 = Mariana Trench — classic distractors.</span><span class="i-ar">٨٨٥٠ = إيفرست، ١١٠٣٥ = خندق ماريانا — اختيارات مضللة كلاسيكية.</span></div></div>
+
+    <div class="q"><div class="qt">7. A fully saturated soil is said to be:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) One phase system</button>
+      <button onclick="mcq(this,0)">b) Two phase system with soil and air</button>
+      <button data-ok onclick="mcq(this,1)">c) Two phase system with soil and water</button>
+      <button onclick="mcq(this,0)">d) Three phase system</button></div>
+      <div class="fb">💡 <span class="i-en">Saturated: voids fully filled with water → solids + water only.</span><span class="i-ar">عند التشبع الفراغات كلها بتتملي ميه → مواد صلبة + ميه بس.</span></div></div>
+
+    <div class="q"><div class="qt">8. The weight of total voids is equal to the weight of water.</div><div class="qopts">
+      <button data-ok onclick="mcq(this,1)">a) True</button>
+      <button onclick="mcq(this,0)">b) False</button></div>
+      <div class="fb">💡 <span class="i-en">Voids = water + air, and air is weightless → W<sub>v</sub> = W<sub>w</sub>.</span><span class="i-ar">الفراغات = ميه + هوا، والهوا ملوش وزن → وزن الفراغات = وزن الميه.</span></div></div>
+
+    <div class="q"><div class="qt">9. The term relative density D<sub>r</sub> is used for cohesion-less soil only.</div><div class="qopts">
+      <button data-ok onclick="mcq(this,1)">a) True</button>
+      <button onclick="mcq(this,0)">b) False</button></div>
+      <div class="fb">💡 <span class="i-en">D<sub>r</sub> applies to cohesionless (sandy/gravelly) soils.</span><span class="i-ar">الكثافة النسبية للتربة غير المتماسكة (الرملية/الحصوية) بس.</span></div></div>
+
+    <div class="q"><div class="qt">10. When the natural state of cohesion-less soil is in its loosest form, its relative density equals:</div><div class="qopts">
+      <button data-ok onclick="mcq(this,1)">a) 0</button>
+      <button onclick="mcq(this,0)">b) 0.5</button>
+      <button onclick="mcq(this,0)">c) 1</button>
+      <button onclick="mcq(this,0)">d) 1.5</button></div>
+      <div class="fb">💡 <span class="i-en">Loosest: e<sub>o</sub> = e<sub>max</sub> → D<sub>r</sub> = 0. Densest → 1.</span><span class="i-ar">في أكتر حالة تفكك: e<sub>o</sub> = e<sub>max</sub> → D<sub>r</sub> = 0. وأكتر حالة دمك → ١.</span></div></div>
+
+    <div class="q"><div class="qt">11. Void ratio of soil can:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) Never be greater than 100%</button>
+      <button onclick="mcq(this,0)">b) Take values only from 0% to 100%</button>
+      <button onclick="mcq(this,0)">c) Be less than 0%</button>
+      <button data-ok onclick="mcq(this,1)">d) Be greater than 100%</button></div>
+      <div class="fb">💡 <span class="i-en">e = V<sub>v</sub>/V<sub>s</sub> can exceed 1 when voids exceed solids.</span><span class="i-ar">e = V<sub>v</sub>/V<sub>s</sub> ممكن تعدّي ١ لما حجم الفراغات يبقى أكبر من حجم المواد الصلبة.</span></div></div>
+
+    <div class="q"><div class="qt">12. The weight of total voids is equal to the weight of water.</div><div class="qopts">
+      <button data-ok onclick="mcq(this,1)">a) True</button>
+      <button onclick="mcq(this,0)">b) False</button></div>
+      <div class="fb">💡 <span class="i-en">Yes — it was literally asked twice in the same exam!</span><span class="i-ar">أيوه — السؤال جه مرتين في نفس الامتحان حرفياً!</span></div></div>
+
+    <div class="q"><div class="qt">13. Iron is one of the most common elements in the crust, occupying …% of total elements:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) 2.36</button>
+      <button onclick="mcq(this,0)">b) 8.32</button>
+      <button data-ok onclick="mcq(this,1)">c) 5.63</button>
+      <button onclick="mcq(this,0)">d) 2.33</button></div>
+      <div class="fb">💡 <span class="i-en">Iron ≈ 5.63% of the crust.</span><span class="i-ar">الحديد ≈ ٥٫٦٣٪ من القشرة.</span></div></div>
+
+    <div class="q"><div class="qt">14. Slow cooling, large crystal:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) Extrusive igneous rock</button>
+      <button data-ok onclick="mcq(this,1)">b) Intrusive igneous rock</button>
+      <button onclick="mcq(this,0)">c) Mechanical sedimentary rocks</button>
+      <button onclick="mcq(this,0)">d) Chemical sedimentary rocks</button></div>
+      <div class="fb">💡 <span class="i-en">Intrusive (plutonic) = deep, slow cooling, large crystals.</span><span class="i-ar">الجوفية (البلوتونية) = جوه في العمق، تبريد بطيء، بلورات كبيرة.</span></div></div>
+
+    <div class="q"><div class="qt">15. … forms where broken, angular fragments of rock or mineral debris accumulate:</div><div class="qopts">
+      <button data-ok onclick="mcq(this,1)">a) Breccia</button>
+      <button onclick="mcq(this,0)">b) Conglomerate</button>
+      <button onclick="mcq(this,0)">c) Sandstone</button>
+      <button onclick="mcq(this,0)">d) Mudstone</button></div>
+      <div class="fb">💡 <span class="i-en">Angular = Breccia; rounded pebbles = Conglomerate.</span><span class="i-ar">قطع بزوايا حادة = بريشيا؛ حصى مدوّرة = كونجلوميرات.</span></div></div>
+
+    <div class="q"><div class="qt">16. The magnetic field of the Earth is caused by sources in the mantle.</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) True</button>
+      <button data-ok onclick="mcq(this,1)">b) False</button></div>
+      <div class="fb">💡 <span class="i-en">Sources are in the <b>core</b> (spinning liquid outer core).</span><span class="i-ar">المصدر هو <b>اللب</b> (دوران اللب الخارجي السايل).</span></div></div>
+
+    <h3><span class="i-en">Question 1-B (4 marks)</span><span class="i-ar">سؤال ١-ب (٤ درجات)</span></h3>
+    <div class="q"><div class="qt">Illustrate with drawing how the Ground Penetrating Radar works and mention three applications of GPR.</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show model answer</span><span class="i-ar">ورّيني الإجابة النموذجية</span></button>
+      <div class="reveal"><span class="i-en"><b>Sketch:</b> laptop connected to a central unit on a wheeled cart; antennae send radar pulses into the ground; reflections from buried objects/layers return and are plotted as amplitude vs time (ns).<br><b>Any 3 applications:</b> locating buried pipes/utilities · archaeological investigations · locating buried foundations · soil/subsurface profiling.</span><span class="i-ar"><b>الرسم:</b> لابتوب موصول بوحدة مركزية على عربة بعجلة؛ الهوائيات ترسل نبضات رادار في الأرض؛ ترتد الانعكاسات من الأجسام/الطبقات المدفونة وتُرسم كسعة مقابل زمن (نانوثانية).<br><b>أي ٣ تطبيقات:</b> تحديد الأنابيب/المرافق المدفونة · الفحوص الأثرية · الأساسات المدفونة · قطاعات التربة.</span></div></div>
+
+    <h3><span class="i-en">Question 2 (10 marks)</span><span class="i-ar">سؤال ٢ (١٠ درجات)</span></h3>
+    <div class="q"><div class="qt">A) (8 marks) Unconfined compression test, D = 50 mm, L = 100 mm:<br>
+      <small>Load (kg): 6869.3 · 13267.9 · 18952.8 · 22598.1 · 25316.8 · 25874.3 · 28630.4 · 28351.6<br>ΔL (mm): 0.0952 · 0.2857 · 0.4761 · 0.6667 · 0.8571 · 1.0476 · 1.429 · 1.8</small><br>Classify the rock according to Deere &amp; Miller.</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show solution</span><span class="i-ar">ورّيني الحل</span></button>
+      <div class="reveal"><span class="i-en">① A = π/4×(5)² = 19.63 cm².<br>② Convert: σ = P/A → 349.9, 675.9, 965.5, 1151.2, 1289.7, 1318.1, 1458.5, 1444.3 kg/cm²; ε = ΔL/100 → 0.0952%…1.8%.<br>③ Plot σ–ε → σ<sub>ult</sub> ≈ <b>1500 kg/cm²</b> → falls in 1125–2250 → class <b>B</b> (high strength).<br>④ Tangent at 0.5σ<sub>ult</sub> (=750): Δy = 800, Δx = 0.0048 → E<sub>t50</sub> = <b>166,667 kg/cm²</b>.<br>⑤ MR = 166,667/1500 = <b>111.1</b> &lt; 200 → <b>L</b>.<br>✅ <b>Rock is BL</b> (high strength, low modulus ratio).</span><span class="i-ar">① A = π/4×(5)² = 19.63 سم².<br>② حوّل: σ = P/A → 349.9 حتى 1458.5 كجم/سم²؛ ε = ΔL/100.<br>③ ارسم σ–ε → σ<sub>ult</sub> ≈ <b>1500 كجم/سم²</b> → بين 1125–2250 → فئة <b>B</b> (مقاومة عالية).<br>④ المماس عند 750: Δy = 800، Δx = 0.0048 → E<sub>t50</sub> = <b>166,667 كجم/سم²</b>.<br>⑤ MR = 111.1 &lt; 200 → <b>L</b>.<br>✅ <b>الصخر BL</b>.</span></div></div>
+    <div class="q"><div class="qt">B) (2 marks) What are the methods of electrical survey?</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show answer</span><span class="i-ar">ورّيني الإجابة</span></button>
+      <div class="reveal">① Resistivity method ② Electromagnetic method ③ Self-potential method ④ Induced polarization method</div></div>
+
+    <h3><span class="i-en">Question 3 (10 marks)</span><span class="i-ar">سؤال ٣ (١٠ درجات)</span></h3>
+    <div class="q"><div class="qt">A) (4 marks) Define: porosity, geophysics, the mantle, atom.</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show answer</span><span class="i-ar">ورّيني الإجابة</span></button>
+      <div class="reveal"><span class="i-en"><b>Porosity:</b> ratio of volume of voids to total volume, n = V<sub>v</sub>/V<sub>t</sub>.<br><b>Geophysics:</b> the science of investigating the Earth using the methods and techniques of physics.<br><b>The mantle:</b> the layer above the core; ~80% of Earth's volume; molten rock rich in Mg and Si.<br><b>Atom:</b> smallest division of an element that still possesses its chemical properties.</span><span class="i-ar"><b>المسامية:</b> نسبة حجم الفراغات إلى الحجم الكلي، n = V<sub>v</sub>/V<sub>t</sub>.<br><b>الجيوفيزياء:</b> علم دراسة الأرض بطرق وتقنيات الفيزياء.<br><b>الوشاح:</b> الطبقة فوق اللب؛ ~٨٠٪ من حجم الأرض؛ صخور منصهرة غنية بالماغنسيوم والسيليكون.<br><b>الذرة:</b> أصغر جزء من العنصر يحتفظ بخواصه الكيميائية.</span></div></div>
+    <div class="q"><div class="qt">B) (6 marks) Auger boring: diameter 50 mm, total core run 300 mm, samples: 13, 16, 6, 9, 12, 5, 18, 23, 7, 10, 25, 31 mm. Calculate CR, RQD and classify the rock.</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show solution</span><span class="i-ar">ورّيني الحل</span></button>
+      <div class="reveal"><span class="i-en">① CR = Σall/300 = 175/300 = <b>58.3%</b><br>② RQD = Σ(≥10) = (13+16+12+18+23+10+25+31)/300 = 148/300 = <b>49.3%</b><br>③ 49.3% falls in 25–50 → <b>Poor rock</b> ✅</span><span class="i-ar">① CR = مجموع الكل/300 = 175/300 = <b>٥٨٫٣٪</b><br>② RQD = مجموع (≥10) = 148/300 = <b>٤٩٫٣٪</b><br>③ تقع في 25–50 → <b>صخر رديء (Poor)</b> ✅</span></div></div>
+
+    <h3><span class="i-en">Question 4 (10 marks)</span><span class="i-ar">سؤال ٤ (١٠ درجات)</span></h3>
+    <div class="q"><div class="qt">A) (4 marks) Compare: a) two-phase vs three-phase soil systems (with drawing) · b) types of rock according to origin.</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show answer</span><span class="i-ar">ورّيني الإجابة</span></button>
+      <div class="reveal"><span class="i-en"><b>a)</b> Two-phase: dry soil (air+solids, S<sub>r</sub>=0) or saturated soil (water+solids, S<sub>r</sub>=1) — draw a box of 2 layers. Three-phase: wet/moist soil (air+water+solids, 0&lt;S<sub>r</sub>&lt;1) — box of 3 layers.<br><b>b)</b> Igneous: crystallization of magma · Sedimentary: weathering + erosion of pre-existing rocks · Metamorphic: change of buried rocks under heat &amp; pressure.</span><span class="i-ar"><b>أ)</b> ثنائي الأطوار: تربة جافة (هواء+صلب، S<sub>r</sub>=0) أو مشبعة (ماء+صلب، S<sub>r</sub>=1) — ارسم صندوقاً بطبقتين. ثلاثي الأطوار: تربة رطبة (هواء+ماء+صلب) — صندوق بثلاث طبقات.<br><b>ب)</b> نارية: تبلور الماجما · رسوبية: تجوية وتعرية صخور سابقة · متحولة: تغير الصخور المدفونة بالحرارة والضغط.</span></div></div>
+    <div class="q"><div class="qt">B) (6 marks) Wet soil: W<sub>t</sub> = 600 g, V = 365 cm³; after oven drying W<sub>s</sub> = 543 g; G<sub>s</sub> = 2.67. Find the water content, void ratio and degree of saturation.</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show solution</span><span class="i-ar">ورّيني الحل</span></button>
+      <div class="reveal">① W<sub>w</sub> = 600−543 = 57 g → <b>w<sub>c</sub> = 57/543 = 10.5%</b><br>② V<sub>s</sub> = 543/(2.67×1) = 203.4 cm³ → V<sub>v</sub> = 365−203.4 = 161.6 cm³ → <b>e = 0.795</b><br>③ V<sub>w</sub> = 57 cm³ → <b>S<sub>r</sub> = 57/161.6 = 35.3%</b> ✅</div></div>
+
+    <div class="score"><span><span class="i-en">MCQ Score:</span><span class="i-ar">نتيجتك في الاختيارات:</span> <b id="scoreVal">0 / 0</b></span></div>
+  </div>
+</section>
+<!-- ============ PRACTICE ============ -->
+<section id="practice">
+  <h2><span class="num" style="background:var(--l5)">🧠</span><span class="i-en">Extra Practice — new questions, same style</span><span class="i-ar">تدريبات زيادة — أسئلة جديدة بنفس الستايل</span></h2>
+  <div class="card">
+    <p><span class="i-en">Not from last year's exam. Same style, new targets. Solve them all.</span><span class="i-ar">الأسئلة دي مش من امتحان السنة اللي فاتت — نفس الستايل بس على مواضيع تانية. حلّها كلها.</span></p>
+
+    <div class="q"><div class="qt">P1. Which rock is a chemical sedimentary rock?</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) Breccia</button>
+      <button onclick="mcq(this,0)">b) Sandstone</button>
+      <button data-ok onclick="mcq(this,1)">c) Dolomite</button>
+      <button onclick="mcq(this,0)">d) Gneiss</button></div>
+      <div class="fb">💡 <span class="i-en">Chemical = limestone + dolomite. Gneiss is metamorphic.</span><span class="i-ar">الرسوبية الكيميائية = الحجر الجيري والدولوميت. النيس ده صخر متحول.</span></div></div>
+
+    <div class="q"><div class="qt">P2. Marble, gneiss and schist are examples of:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) Igneous rocks</button>
+      <button onclick="mcq(this,0)">b) Sedimentary rocks</button>
+      <button data-ok onclick="mcq(this,1)">c) Metamorphic rocks</button>
+      <button onclick="mcq(this,0)">d) Monomineralic rocks</button></div>
+      <div class="fb">💡 <span class="i-en">All three form under heat + pressure.</span><span class="i-ar">التلاتة بيتكونوا تحت الحرارة والضغط.</span></div></div>
+
+    <div class="q"><div class="qt">P3. The outer core of the Earth is solid.</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) True</button>
+      <button data-ok onclick="mcq(this,1)">b) False</button></div>
+      <div class="fb">💡 <span class="i-en">Outer core = liquid Ni + Fe (~3700 °C). The INNER core is solid.</span><span class="i-ar">اللب الخارجي سايل (نيكل وحديد ~٣٧٠٠°م). الداخلي هو الصلب.</span></div></div>
+
+    <div class="q"><div class="qt">P4. The mantle makes up nearly … of the Earth's total volume:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) 50%</button>
+      <button onclick="mcq(this,0)">b) 65%</button>
+      <button data-ok onclick="mcq(this,1)">c) 80%</button>
+      <button onclick="mcq(this,0)">d) 93%</button></div>
+      <div class="fb">💡 <span class="i-en">80%. The 93% is the Fe-O-Si-Mg composition fact.</span><span class="i-ar">٨٠٪. أما الـ ٩٣٪ دي نسبة الحديد والأكسجين والسيليكون والماغنسيوم في تركيب الأرض كلها.</span></div></div>
+
+    <div class="q"><div class="qt">P5. The chemical formula of quartz is:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) CaCO₃</button>
+      <button data-ok onclick="mcq(this,1)">b) SiO₂</button>
+      <button onclick="mcq(this,0)">c) FeS₂</button>
+      <button onclick="mcq(this,0)">d) MgCO₃</button></div>
+      <div class="fb">💡 <span class="i-en">Quartz = Silicon + Oxygen = SiO₂.</span><span class="i-ar">الكوارتز = سيليكون + أكسجين = SiO₂.</span></div></div>
+
+    <div class="q"><div class="qt">P6. Mudstone is made of particles that are:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) 0.06 – 2 mm</button>
+      <button data-ok onclick="mcq(this,1)">b) Less than 0.05 mm</button>
+      <button onclick="mcq(this,0)">c) Rounded pebbles</button>
+      <button onclick="mcq(this,0)">d) Angular fragments</button></div>
+      <div class="fb">💡 <span class="i-en">Tiny clay particles, deposited in quiet places (lakes, deep sea). 0.06–2 mm = sandstone.</span><span class="i-ar">حبيبات طينية دقيقة جداً بتترسب في بيئات هادية (بحيرات/أعماق البحر). أما 0.06–2 مم دي للحجر الرملي.</span></div></div>
+
+    <div class="q"><div class="qt">P7. γ<sub>sat</sub> &gt; γ<sub>bulk</sub></div><div class="qopts">
+      <button data-ok onclick="mcq(this,1)">a) True</button>
+      <button onclick="mcq(this,0)">b) False</button></div>
+      <div class="fb">💡 <span class="i-en">Water fills the air voids, so the saturated soil is heavier.</span><span class="i-ar">الميه بتملا فراغات الهوا فالتربة المشبعة بتبقى أتقل.</span></div></div>
+
+    <div class="q"><div class="qt">P8. The submerged density γ<sub>sub</sub> equals:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) γ<sub>sat</sub> + γ<sub>w</sub></button>
+      <button data-ok onclick="mcq(this,1)">b) γ<sub>sat</sub> − γ<sub>w</sub></button>
+      <button onclick="mcq(this,0)">c) γ<sub>b</sub> − γ<sub>d</sub></button>
+      <button onclick="mcq(this,0)">d) γ<sub>s</sub>/γ<sub>w</sub></button></div>
+      <div class="fb">💡 γ<sub>sub</sub> = γ<sub>sat</sub> − γ<sub>w</sub>. <span class="i-en">(d is G<sub>s</sub>.)</span><span class="i-ar">(الاختيار d هو G<sub>s</sub>.)</span></div></div>
+
+    <div class="q"><div class="qt">P9. In the unconfined compression test, the ratio between sample height and diameter is:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) 1.0</button>
+      <button data-ok onclick="mcq(this,1)">b) 2.0</button>
+      <button onclick="mcq(this,0)">c) 3.0</button>
+      <button onclick="mcq(this,0)">d) 0.5</button></div>
+      <div class="fb">💡 L/D = 2.0 (<span class="i-en">e.g. D = 50 mm, L = 100 mm</span><span class="i-ar">مثلاً D = 50 مم، L = 100 مم</span>).</div></div>
+
+    <div class="q"><div class="qt">P10. The instrument used in the gravity method is:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) Syscal</button>
+      <button data-ok onclick="mcq(this,1)">b) Gravimeter</button>
+      <button onclick="mcq(this,0)">c) Magnetometer</button>
+      <button onclick="mcq(this,0)">d) GPR antenna</button></div>
+      <div class="fb">💡 <span class="i-en">Gravimeter = sensitive spring + mass. Syscal = electrical resistivity.</span><span class="i-ar">الجرافيميتر = سوستة حساسة شايلة كتلة. أما Syscal ده جهاز المقاومة الكهربائية.</span></div></div>
+
+    <div class="q"><div class="qt">P11. The seismic method measures:</div><div class="qopts">
+      <button data-ok onclick="mcq(this,1)">a) Seismic-wave travel time</button>
+      <button onclick="mcq(this,0)">b) Magnetic field variation</button>
+      <button onclick="mcq(this,0)">c) Gravity fluctuations</button>
+      <button onclick="mcq(this,0)">d) Electrical resistivity</button></div>
+      <div class="fb">💡 <span class="i-en">Travel time of seismic waves — the most common geophysical method.</span><span class="i-ar">زمن انتقال الموجات الزلزالية — أكتر طريقة جيوفيزيائية شايعة.</span></div></div>
+
+    <div class="q"><div class="qt">P12. The two most abundant elements in the Earth's crust are:</div><div class="qopts">
+      <button onclick="mcq(this,0)">a) Iron and Magnesium</button>
+      <button data-ok onclick="mcq(this,1)">b) Oxygen and Silicon</button>
+      <button onclick="mcq(this,0)">c) Nickel and Iron</button>
+      <button onclick="mcq(this,0)">d) Calcium and Carbon</button></div>
+      <div class="fb">💡 <span class="i-en">O and Si dominate the crust. Ni + Fe is the core.</span><span class="i-ar">الأكسجين والسيليكون هما الأكتر في القشرة. النيكل والحديد في اللب.</span></div></div>
+
+    <div class="q"><div class="qt">P13. <span class="i-en">(Numeric)</span><span class="i-ar">(مسألة)</span> Brazilian test: D = 10 cm, L = 20 cm, failure load P = 3 tons. Find σ<sub>t</sub> and estimate σ<sub>c</sub>.</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show solution</span><span class="i-ar">ورّيني الحل</span></button>
+      <div class="reveal">σ<sub>t</sub> = 2P/(πDL) = 2×3000/(3.14×10×20) = <b>9.55 kg/cm²</b><br>σ<sub>t</sub> = 0.10 σ<sub>c</sub> → σ<sub>c</sub> = 9.55/0.10 = <b>95.5 kg/cm²</b> ✅</div></div>
+
+    <div class="q"><div class="qt">P14. <span class="i-en">(Numeric)</span><span class="i-ar">(مسألة)</span> Core run = 200 mm; samples: 25, 8, 30, 15, 9, 40, 22 mm. Find CR, RQD and classify.</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show solution</span><span class="i-ar">ورّيني الحل</span></button>
+      <div class="reveal">CR = (25+8+30+15+9+40+22)/200 = 149/200 = <b>74.5%</b><br>RQD = (25+30+15+40+22)/200 = 132/200 = <b>66%</b> → 50–75 → <span class="i-en"><b>Fair rock</b></span><span class="i-ar"><b>صخر متوسط (Fair)</b></span> ✅</div></div>
+
+    <div class="q"><div class="qt">P15. <span class="i-en">(List)</span><span class="i-ar">(عدّد)</span> What are the 4 sub-cycles of the geologic cycle?</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show answer</span><span class="i-ar">ورّيني الإجابة</span></button>
+      <div class="reveal">① Hydrologic cycle ② Tectonic cycle ③ Geochemical cycle ④ Rock cycle</div></div>
+
+    <div class="q"><div class="qt">P16. <span class="i-en">(Define + value)</span><span class="i-ar">(عرّف + قيمة)</span> Define relative density D<sub>r</sub>. What is its value for soil in the densest state?</div>
+      <button class="reveal-btn" onclick="reveal(this)"><span class="i-en">Show answer</span><span class="i-ar">ورّيني الإجابة</span></button>
+      <div class="reveal"><span class="i-en">D<sub>r</sub> = (e<sub>max</sub>−e<sub>o</sub>)/(e<sub>max</sub>−e<sub>min</sub>), used for cohesionless soil only. Densest state: e<sub>o</sub> = e<sub>min</sub> → <b>D<sub>r</sub> = 1</b>.</span><span class="i-ar">D<sub>r</sub> = (e<sub>max</sub>−e<sub>o</sub>)/(e<sub>max</sub>−e<sub>min</sub>)، للتربة غير المتماسكة فقط. في أكثر حالة دمكاً: e<sub>o</sub> = e<sub>min</sub> → <b>D<sub>r</sub> = 1</b>.</span></div></div>
+  </div>
+</section>
+
+<!-- ============ RAPID FACTS ============ -->
+<section id="rapid">
+  <h2><span class="num" style="background:var(--l6)">⚡</span><span class="i-en">Rapid-Fire Numbers (MCQ Ammo)</span><span class="i-ar">أرقام سريعة (ذخيرة الاختيارات)</span></h2>
+  <div class="card">
+    <div class="grid2">
+      <div class="fact"><span class="i-en">Earth's age = <b>4.54 billion yrs</b> (formed ~4.57)</span><span class="i-ar">عمر الأرض = <b>٤٫٥٤ مليار سنة</b> (تكوّنت ~٤٫٥٧)</span></div>
+      <div class="fact"><span class="i-en">Avg diameter = <b>12,742 km</b> (range 12,700–12,750)</span><span class="i-ar">متوسط القطر = <b>١٢٧٤٢ كم</b> (المدى ١٢٧٠٠–١٢٧٥٠)</span></div>
+      <div class="fact"><span class="i-en">Everest = <b>8,850 m</b> · Mariana Trench = <b>11,035 m</b></span><span class="i-ar">إيفرست = <b>٨٨٥٠ م</b> · خندق ماريانا = <b>١١٠٣٥ م</b></span></div>
+      <div class="fact"><span class="i-en">Orbit: <b>365.25 days</b> at <b>29.7 km/s</b> · spin: <b>23 h 56 min</b></span><span class="i-ar">الدوران حول الشمس: <b>٣٦٥٫٢٥ يوماً</b> بسرعة <b>٢٩٫٧ كم/ث</b> · حول نفسها: <b>٢٣ س ٥٦ د</b></span></div>
+      <div class="fact"><span class="i-en">Avg density = <b>5.25 t/m³</b> · 93% = Fe, O, Si, Mg</span><span class="i-ar">متوسط الكثافة = <b>٥٫٢٥ طن/م³</b> · ٩٣٪ = حديد، أكسجين، سيليكون، ماغنسيوم</span></div>
+      <div class="fact"><span class="i-en">Earliest life ≥ <b>3.5 billion yrs</b> ago</span><span class="i-ar">أقدم حياة ≥ <b>٣٫٥ مليار سنة</b></span></div>
+      <div class="fact"><span class="i-en">Inner core <b>solid NiFe ~4300 °C</b> · outer core <b>liquid ~3700 °C</b></span><span class="i-ar">اللب الداخلي <b>صلب ~٤٣٠٠°م</b> · الخارجي <b>سائل ~٣٧٠٠°م</b></span></div>
+      <div class="fact"><span class="i-en">Outer core spin → <b>magnetism</b> (core, NOT mantle)</span><span class="i-ar">دوران اللب الخارجي → <b>المغناطيسية</b> (اللب وليس الوشاح)</span></div>
+      <div class="fact"><span class="i-en">Mantle = <b>80% of volume</b>, rich in Mg + Si</span><span class="i-ar">الوشاح = <b>٨٠٪ من الحجم</b>، غني بالماغنسيوم والسيليكون</span></div>
+      <div class="fact"><span class="i-en">Iron in crust = <b>5.63%</b> · O &amp; Si most abundant</span><span class="i-ar">الحديد في القشرة = <b>٥٫٦٣٪</b> · الأكسجين والسيليكون الأكثر وفرة</span></div>
+      <div class="fact"><span class="i-en">Sedimentary = <b>75%</b> of continental outcrops</span><span class="i-ar">الرسوبية = <b>٧٥٪</b> من المكاشف القارية</span></div>
+      <div class="fact"><span class="i-en">Sandstone <b>0.06–2 mm</b> · mudstone <b>&lt; 0.05 mm</b></span><span class="i-ar">الحجر الرملي <b>٠٫٠٦–٢ مم</b> · الطيني <b>&lt; ٠٫٠٥ مم</b></span></div>
+      <div class="fact"><span class="i-en">Limestone &gt; <b>50% carbonate</b> (calcite)</span><span class="i-ar">الحجر الجيري &gt; <b>٥٠٪ كربونات</b> (كالسيت)</span></div>
+      <div class="fact"><span class="i-en">UCS sample <b>L/D = 2</b> · σ<sub>t</sub> = <b>0.10</b> σ<sub>c</sub></span><span class="i-ar">عينة الضغط <b>L/D = 2</b> · σ<sub>t</sub> = <b>0.10</b> σ<sub>c</sub></span></div>
+      <div class="fact"><span class="i-en">Loosest D<sub>r</sub> = <b>0</b> · densest D<sub>r</sub> = <b>1</b></span><span class="i-ar">الأكثر تفككاً D<sub>r</sub> = <b>٠</b> · الأكثر دمكاً D<sub>r</sub> = <b>١</b></span></div>
+      <div class="fact"><span class="i-en">γ<sub>sat</sub> <b>&gt;</b> γ<sub>bulk</sub> · shape = <b>oblate spheroid</b></span><span class="i-ar">γ<sub>sat</sub> <b>&gt;</b> γ<sub>bulk</sub> · الشكل = <b>كروي مفلطح</b></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEFINITIONS ============ -->
+<section id="defs">
+  <h2><span class="num" style="background:var(--green)">📖</span><span class="i-en">Definitions Bank (free marks)</span><span class="i-ar">بنك التعريفات (درجات في جيبك)</span></h2>
+  <div class="card">
+    <table>
+      <tr><th><span class="i-en">Term</span><span class="i-ar">المصطلح</span></th><th><span class="i-en">What to write</span><span class="i-ar">ماذا تكتب</span></th></tr>
+      <tr><td>Geology</td><td><span class="i-en">The study of the Earth and its systems (Geo = Earth, Logis = study).</span><span class="i-ar">علم دراسة الأرض وأنظمتها (Geo = الأرض، Logis = علم).</span></td></tr>
+      <tr><td>Engineering geology</td><td><span class="i-en">Applying geological sciences to assure geological factors in the location, design, construction, operation &amp; maintenance of engineering works.</span><span class="i-ar">تطبيق العلوم الجيولوجية لضمان العوامل الجيولوجية في موقع وتصميم وإنشاء وتشغيل وصيانة الأعمال الهندسية.</span></td></tr>
+      <tr><td>Geophysics ⭐</td><td><span class="i-en">The science of investigating the Earth using the methods and techniques of physics.</span><span class="i-ar">علم دراسة الأرض بطرق وتقنيات الفيزياء.</span></td></tr>
+      <tr><td>Atom ⭐</td><td><span class="i-en">Smallest division of an element that still has its chemical properties.</span><span class="i-ar">أصغر جزء من العنصر يحتفظ بخواصه الكيميائية.</span></td></tr>
+      <tr><td>Element</td><td><span class="i-en">Atoms that, in pure form, can't be divided into smaller units without changing properties.</span><span class="i-ar">ذرات لا يمكن تقسيمها في صورتها النقية دون تغيّر خواصها.</span></td></tr>
+      <tr><td>Mineral</td><td><span class="i-en">Naturally occurring, usually solid inorganic substance with a chemical formula and crystal structure (e.g., quartz SiO₂).</span><span class="i-ar">مادة طبيعية صلبة غالباً وغير عضوية لها صيغة كيميائية وبناء بلوري (مثل الكوارتز SiO₂).</span></td></tr>
+      <tr><td>Rock</td><td><span class="i-en">A naturally occurring aggregate of minerals (one mineral only = monomineralic).</span><span class="i-ar">تجمع طبيعي من المعادن (أحادي المعدن = monomineralic).</span></td></tr>
+      <tr><td>The mantle ⭐</td><td><span class="i-en">The layer above the core; ~80% of Earth's volume; molten rock rich in Mg and Si.</span><span class="i-ar">الطبقة فوق اللب؛ ~٨٠٪ من حجم الأرض؛ صخور منصهرة غنية بالماغنسيوم والسيليكون.</span></td></tr>
+      <tr><td>Porosity ⭐</td><td><span class="i-en">Ratio of volume of voids to total volume: n = V<sub>v</sub>/V<sub>t</sub>.</span><span class="i-ar">نسبة حجم الفراغات إلى الحجم الكلي: n = V<sub>v</sub>/V<sub>t</sub>.</span></td></tr>
+      <tr><td>Void ratio</td><td><span class="i-en">Ratio of volume of voids to volume of solids: e = V<sub>v</sub>/V<sub>s</sub>.</span><span class="i-ar">نسبة حجم الفراغات إلى حجم المواد الصلبة: e = V<sub>v</sub>/V<sub>s</sub>.</span></td></tr>
+      <tr><td>RQD</td><td><span class="i-en">Sum of core sample lengths ≥ 10 cm divided by total core run length.</span><span class="i-ar">مجموع أطوال العينات ≥ ١٠ سم مقسوماً على الطول الكلي للجسّة.</span></td></tr>
+      <tr><td>Hydrogeology</td><td><span class="i-en">Branch of geology about distribution and movement of groundwater in soil and rocks (aquifers).</span><span class="i-ar">فرع الجيولوجيا المعني بتوزيع وحركة المياه الجوفية في التربة والصخور (الخزانات الجوفية).</span></td></tr>
+      <tr><td>Magma / Lava</td><td><span class="i-en">Molten rock below the surface / magma erupted at the surface.</span><span class="i-ar">صخور منصهرة تحت السطح / الماجما الخارجة على السطح.</span></td></tr>
+    </table>
+    <p style="margin-top:8px;font-size:.9em;color:var(--muted)">⭐ = <span class="i-en">asked in last year's final.</span><span class="i-ar">جه في امتحان السنة اللي فاتت.</span></p>
+  </div>
+
+  <div class="card">
+    <h3><span class="i-en">🌙 Before you sleep — final check</span><span class="i-ar">🌙 قبل ما تنام — التشييك الأخير</span></h3>
+    <ul class="check">
+      <li><input type="checkbox"><span><span class="i-en">I can do a full Deere &amp; Miller classification from a load table (convert → plot → σ<sub>ult</sub> → E<sub>t50</sub> → MR → two letters).</span><span class="i-ar">أقدر أعمل تصنيف دير وميلر كامل من جدول أحمال (تحويل → رسم → σ<sub>ult</sub> → E<sub>t50</sub> → MR → حرفان).</span></span></li>
+      <li><input type="checkbox"><span><span class="i-en">I can compute CR + RQD and classify the rock.</span><span class="i-ar">أقدر أحسب CR و RQD وأصنّف الصخر.</span></span></li>
+      <li><input type="checkbox"><span><span class="i-en">I can run the soil routine: W<sub>w</sub> → w<sub>c</sub> → V<sub>s</sub> → e → S<sub>r</sub>.</span><span class="i-ar">أقدر أحل مسألة التربة بالترتيب: W<sub>w</sub> ← w<sub>c</sub> ← V<sub>s</sub> ← e ← S<sub>r</sub>.</span></span></li>
+      <li><input type="checkbox"><span><span class="i-en">I can sketch GPR + the 2-phase vs 3-phase diagrams.</span><span class="i-ar">أقدر أرسم GPR ومخططات النظام الثنائي والثلاثي.</span></span></li>
+      <li><input type="checkbox"><span><span class="i-en">I can list: 4 electrical methods, 3 rock types, 10 geo-hazards, 4 geologic sub-cycles.</span><span class="i-ar">أقدر أعدّد: ٤ طرق كهربائية، ٣ أنواع صخور، ١٠ مخاطر جيولوجية، ٤ دورات جيولوجية.</span></span></li>
+      <li><input type="checkbox"><span><span class="i-en">I scored 13+ / 16 on the Exam Simulator MCQs.</span><span class="i-ar">جبت ١٣+ من ١٦ في اختيارات محاكي الامتحان.</span></span></li>
+    </ul>
+    <p style="margin-top:10px"><b><span class="i-en">Bring:</span><span class="i-ar">هات معاك:</span></b> <span class="i-en">calculator, ruler (for the stress–strain plot!), pencils. Write units on every answer. You've got this. 💪</span><span class="i-ar">آلة حاسبة، ومسطرة (عشان رسمة الإجهاد–الانفعال!)، وأقلام رصاص. واكتب الوحدات في كل إجابة — دي مكتوبة في تعليمات الامتحان نفسها. إنت قدها. 💪</span></p>
+  </div>
+</section>
+</div>
+<script>
+function toggleTheme(){
+  var b=document.documentElement;
+  var d=b.getAttribute('data-theme')==='dark';
+  b.setAttribute('data-theme',d?'light':'dark');
+  document.getElementById('themeBtn').textContent=d?'🌙':'☀️';
+  try{localStorage.setItem('bas131theme',d?'light':'dark');}catch(e){}
+}
+function toggleLang(){
+  var ar=document.body.classList.toggle('lang-ar');
+  document.documentElement.lang=ar?'ar':'en';
+  document.getElementById('langBtn').textContent=ar?'EN':'عربي';
+  try{localStorage.setItem('bas131lang',ar?'ar':'en');}catch(e){}
+}
+/* dark mode is the default — built for night-before grinding */
+var savedTheme='dark';
+try{savedTheme=localStorage.getItem('bas131theme')||'dark';}catch(e){}
+document.documentElement.setAttribute('data-theme',savedTheme);
+document.getElementById('themeBtn').textContent=savedTheme==='dark'?'☀️':'🌙';
+try{
+  if(localStorage.getItem('bas131lang')==='ar'){document.body.classList.add('lang-ar');document.documentElement.lang='ar';document.getElementById('langBtn').textContent='EN';}
+}catch(e){}
+var score=0, answered=0;
+function mcq(btn,ok){
+  var q=btn.closest('.q'); if(q.dataset.done)return;
+  q.dataset.done=1; answered++;
+  var btns=q.querySelectorAll('.qopts button');
+  btns.forEach(function(b){b.disabled=true;});
+  if(ok){btn.classList.add('correct');score++;}
+  else{btn.classList.add('wrong');q.querySelectorAll('.qopts button[data-ok]').forEach(function(b){b.classList.add('correct');});}
+  var fb=q.querySelector('.fb'); if(fb)fb.style.display='block';
+  var sc=document.getElementById('scoreVal'); if(sc)sc.textContent=score+' / '+answered;
+}
+function reveal(btn){
+  var r=btn.nextElementSibling; var show=r.style.display!=='block';
+  r.style.display=show?'block':'none';
+}
+</script>
+</body>
+</html>
